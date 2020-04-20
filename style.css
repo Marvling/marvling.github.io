@@ -76,7 +76,7 @@ ul#links {
 
 .nav-top{
     display: table; /* Allow the centering to work */
-    margin-top: 8px;  /* working around baseline alignment */
+    margin-top: 16px; 
 }
 
 
