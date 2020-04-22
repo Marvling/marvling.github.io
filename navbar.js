@@ -12,7 +12,7 @@ $(document).ready(function ()
         $(content).show();
         $(content).siblings('.tab-content').hide();
     });
-    $('.row-long a').click(function (event) 
+    $('.row-long a#hide').click(function (event) 
     
     {
         event.preventDefault();
