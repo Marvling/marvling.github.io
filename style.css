@@ -169,6 +169,8 @@ ul#pages li{
 
 
 .text-box{
+    pointer-events: none;
+
     position: absolute;
     left: 0px;
     top: 32px;
@@ -189,6 +191,7 @@ ul#pages li{
 
 
 .text-box ul{
+    pointer-events: none;
     background-color: inherit;
 }
 
