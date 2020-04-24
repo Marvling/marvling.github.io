@@ -7,7 +7,6 @@
 }
 
 body{
-    /* margin: 24px; */
     height: 100vh;
     background-color: #d2d6d6;
 }
@@ -18,27 +17,14 @@ a{
     color: inherit;
 }
 
-/* .nav-bg{
-    background-color: #7b7ebc;
-
-    width: 272px;
-    height: 100%;
-    margin-top: -24px;
-    margin-left: -24px;
-    z-index: -1;
-    position: static;
-} */
 
 .nav {
     width: 240px;
     height: 100%;
     float:left;
     position: static;
-    /* padding-top: -24px; */
     padding-left: 24px;
     padding-right: 8px;
-    /* margin: -24px; */
-
     background-color: #7b7ebc;
 }
 
