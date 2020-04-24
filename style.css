@@ -7,9 +7,9 @@
 }
 
 body{
-    margin: 24px;
-    background-color: #d2d6d6;
+    /* margin: 24px; */
     height: 100vh;
+    background-color: #d2d6d6;
 }
 
 
@@ -18,7 +18,7 @@ a{
     color: inherit;
 }
 
-.nav-bg{
+/* .nav-bg{
     background-color: #7b7ebc;
 
     width: 272px;
@@ -26,16 +26,20 @@ a{
     margin-top: -24px;
     margin-left: -24px;
     z-index: -1;
-    position: absolute;
-}
+    position: static;
+} */
 
 .nav {
     width: 240px;
     height: 100%;
     float:left;
-    position: absolute;
-    padding-top: -24px;
-    margin: 24;
+    position: static;
+    /* padding-top: -24px; */
+    padding-left: 24px;
+    padding-right: 8px;
+    /* margin: -24px; */
+
+    background-color: #7b7ebc;
 }
 
 #title{
@@ -47,6 +51,8 @@ a{
 
     display: block;
     height: 48px;
+
+    padding-top: 24px;
 
     margin-block-start: 0px;
     margin-block-end: 0px;
@@ -111,8 +117,8 @@ ul#pages li{
 /* content styling */
 .tab-content{
 
-    margin-left: 296px;
-    padding-top: 104px;
+    margin-left: 320px;
+    padding-top: 128px;
     width: 562px;
 
     font-size: 16px;
