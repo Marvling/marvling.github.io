@@ -26,7 +26,7 @@ a{
     margin-top: -24px;
     margin-left: -24px;
     z-index: -1;
-    position: fixed;
+    position: absolute;
 }
 
 .nav {
