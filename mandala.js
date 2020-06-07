@@ -5,12 +5,20 @@ let canvas;
 let strokeColor;
 
 function setup() {
-    canvas = createCanvas(windowWidth, windowHeight)
-    canvas.parent('p5-holder')
-    background(150);
+
+    let canvasDiv = document.getElementById('p5-holder');
+    let width = canvasDiv.offsetWidth - 272;
+    let height = canvasDiv.offsetHeight;
+    let sketchCanvas = createCanvas(width, height);
+
+    console.log(sketchCanvas);
+    sketchCanvas.parent("p5-holder");
+
+    let bgColor = color('#d2d6d6')
+    background(bgColor);
 
     angle = 2 * PI / linesNumber;
-    strokeColor = color(255, 204, 0);
+    strokeColor = color('#7b7ebc');
 }
 
 function mouseDragged() {
@@ -22,7 +30,8 @@ function mouseDragged() {
             vertex(mouseX - width / 2, mouseY - height / 2);
             vertex(pmouseX - width / 2, pmouseY - height / 2);
             endShape();
-        } else {
+        }
+        else {
             beginShape(LINES);
             vertex(-(mouseX - width / 2), mouseY - height / 2);
             vertex(-(pmouseX - width / 2), pmouseY - height / 2);
