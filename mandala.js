@@ -11,14 +11,15 @@ function setup() {
     let height = canvasDiv.offsetHeight;
     let sketchCanvas = createCanvas(width, height);
 
-    console.log(sketchCanvas);
-    sketchCanvas.parent("p5-holder");
+    sketchCanvas.parent("mandalina");
 
     let bgColor = color('#d2d6d6')
     background(bgColor);
 
     angle = 2 * PI / linesNumber;
     strokeColor = color('#7b7ebc');
+
+
 }
 
 function mouseDragged() {
@@ -46,7 +47,15 @@ function draw() {
 
     noFill();
     stroke(strokeColor);
-    strokeWeight(3)
+    strokeWeight(3);
+
+    push();
+    fill(0);
+    strokeWeight(0);
+    stroke(color(0, 0));
+    textAlign(CENTER);
+    text('click and drag', 0, 400 - height);
+    pop();
 }
 
 function keyPressed() {
