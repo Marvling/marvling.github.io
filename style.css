@@ -1,18 +1,16 @@
-
 @charset 'utf-16';
 
-*{
-    
+* {
     margin: 0px
 }
 
-body{
+body {
     height: 100vh;
     background-color: #d2d6d6;
 }
 
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
@@ -21,14 +19,14 @@ a{
 .nav {
     width: 240px;
     height: 100%;
-    float:left;
+    float: left;
     position: static;
     padding-left: 24px;
     padding-right: 8px;
     background-color: #7b7ebc;
 }
 
-#title{
+#title {
 
     font-size: 48px;
     font-family: laski-slab, sans-serif;
@@ -62,29 +60,31 @@ ul#links {
     color: #ffffff;
 }
 
-.nav-top{
-    display: table; /* Allow the centering to work */
-    margin-top: 16px; 
+.nav-top {
+    display: table;
+    /* Allow the centering to work */
+    margin-top: 16px;
 }
 
 
-ul#links li{
+ul#links li {
     display: inline;
     vertical-align: top;
 }
 
-ul#links li#seperator{
+ul#links li#seperator {
     font-size: 16px;
     vertical-align: none;
 }
 
 /* page links styling */
 
-.nav-bot{
-    margin-top: 16px;  /* working around baseline alignment */
+.nav-bot {
+    margin-top: 16px;
+    /* working around baseline alignment */
 }
 
-ul#pages{
+ul#pages {
     list-style-type: none;
     padding: 0px;
 
@@ -96,39 +96,65 @@ ul#pages{
     color: #ffffff;
 }
 
-ul#pages li{
+ul#pages li {
     margin-top: 0.5em;
 }
 
 /* content styling */
-.tab-content{
+.tab-content {
 
     margin-left: 320px;
     padding-top: 128px;
     width: 562px;
 
     font-size: 16px;
-    font-family: proxima-nova,sans-serif;
+    font-family: proxima-nova, sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
-.row{
+#p5-holder{
+
+    margin-left: 0px;
+    margin-right: 0;
+
+    padding-top: 0px;
+    padding-left: 272px;
+
+    width: auto;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+/* #p5-holder p{
+    text-align: center;
+    padding-top: 40px;
+    z-index: -10;
+
+    font-size: 16px;
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+} */
+
+.row {
     margin-bottom: 24px;
     width: 544px;
 }
 
-.row p{
+.row p {
     width: 512px;
     line-height: 16px;
 }
 
-.row-long{
+.row-long {
     margin-bottom: 24px;
     width: 844px;
 }
 
-.column{
+.column {
     display: inline-block;
     width: 240px;
     height: 240px;
@@ -138,15 +164,15 @@ ul#pages li{
     position: relative;
 }
 
-.column img{
+.column img {
     object-fit: cover;
 }
 
-.column:hover > .text-box{
+.column:hover>.text-box {
     display: none;
 }
 
-.column2{
+.column2 {
     display: inline-block;
     width: 512px;
     height: 240px;
@@ -156,7 +182,7 @@ ul#pages li{
 }
 
 
-.text-box{
+.text-box {
     pointer-events: none;
 
     position: absolute;
@@ -170,7 +196,7 @@ ul#pages li{
     color: #ffffff;
     background-color: #7b7ebc;
     width: 184px;
-    
+
     padding-top: 16px;
     padding-bottom: 32px;
     padding-left: 32px;
@@ -178,30 +204,29 @@ ul#pages li{
 
 
 
-.text-box ul{
+.text-box ul {
     pointer-events: none;
     background-color: inherit;
 }
 
-.text-box ul li{
+.text-box ul li {
     background-color: inherit;
 }
 
-.text-box ul li#space{
+.text-box ul li#space {
     margin-top: 16px;
 }
 
 
-.tab-content ul{
+.tab-content ul {
     margin-top: 0;
     list-style-type: none;
     padding: 0px;
     line-height: 16px;
 }
 
-.tab-content ul li#heading{
+.tab-content ul li#heading {
     margin-top: 0.5em;
-
     font-size: 16px;
     font-family: proxima-nova, monospace;
     font-weight: 700;
