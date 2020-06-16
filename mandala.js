@@ -9,6 +9,8 @@ let trailHistory = [];
 
 function setup() {
 
+    
+
     let canvasDiv = document.getElementById('p5-holder');
     let width = canvasDiv.offsetWidth - 272;
     let height = canvasDiv.offsetHeight;
@@ -30,30 +32,34 @@ function drawMandala (){
         for (let i = 0; i < linesNumber; i++){
             // noStroke();
             rotate(angle);
-            beginShape(LINES);
-            vertex(mouseX - width/2, mouseY - height/2);
-            vertex(mouseX - width/2, mouseY - height/2);
-            endShape();
+
+            // beginShape(LINES);
+            // vertex(mouseX - width/2, mouseY - height/2);
+            // vertex(pmouseX - width/2, pmouseY - height/2);
+            // endShape();
 
             let trailData = createVector(mouseX - width/2, mouseY - height/2);
             trailHistory.push(trailData);
+            
+            if(trailHistory.length > 299){
+                trailHistory.shift();
+            }
             
         }
     }
 }
 
 function drawTrails() {
+    
     for (let i = 0; i < linesNumber; i++){
-        rotate(angle)
+        rotate(angle);
+        
         beginShape(LINES);
         for (let i = 0; i < trailHistory.length; i++){
-            
+            // beginShape(LINES);
             let pos = trailHistory[i];
-            vertex(pos.x, pos.y, 10);
-
-            if(trailHistory.length > 299){
-                trailHistory.shift();
-            }
+            vertex(pos.x, pos.y);
+            // endShape();
         }
         endShape();
     }
