@@ -2,7 +2,10 @@ let linesNumber = 8;
 let angle;
 let canvas;
 
+let bgColor;
 let strokeColor;
+
+let trailHistory = [];
 
 function setup() {
 
@@ -12,50 +15,67 @@ function setup() {
     let sketchCanvas = createCanvas(width, height);
 
     sketchCanvas.parent("mandalina");
-
-    let bgColor = color('#d2d6d6')
-    background(bgColor);
-
-    angle = 2 * PI / linesNumber;
+    translate(width/2, height/2)
+    bgColor = color('#d2d6d6');
     strokeColor = color('#7b7ebc');
 
-
+    angle = 2 * PI / linesNumber;
 }
 
-function mouseDragged() {
-    for (let i = 0; i < linesNumber; i++) {
-        rotate(angle);
-        if (i % 2 == 0) {
-            beginShape(LINES);
-            vertex(mouseX - width / 2, mouseY - height / 2);
-            vertex(pmouseX - width / 2, pmouseY - height / 2);
-            endShape();
-        }
-        else {
-            beginShape(LINES);
-            vertex(-(mouseX - width / 2), mouseY - height / 2);
-            vertex(-(pmouseX - width / 2), pmouseY - height / 2);
-            endShape();
-        }
 
+
+function drawMandala (){
+
+    if (mouseIsPressed) {
+        for (let i = 0; i < linesNumber; i++){
+            // noStroke();
+            rotate(angle);
+            beginShape(LINES);
+            vertex(mouseX - width/2, mouseY - height/2);
+            vertex(mouseX - width/2, mouseY - height/2);
+            endShape();
+
+            let trailData = createVector(mouseX - width/2, mouseY - height/2);
+            trailHistory.push(trailData);
+            
+        }
     }
 }
 
+function drawTrails() {
+    for (let i = 0; i < linesNumber; i++){
+        rotate(angle)
+        beginShape(LINES);
+        for (let i = 0; i < trailHistory.length; i++){
+            
+            let pos = trailHistory[i];
+            vertex(pos.x, pos.y, 10);
+
+            if(trailHistory.length > 299){
+                trailHistory.shift();
+            }
+        }
+        endShape();
+    }
+}
+
+function mouseReleased(){
+    console.log('a');
+    trailHistory=[]
+}
+
+
 function draw() {
 
+    background(bgColor);
     translate(width / 2, height / 2);
-
-    noFill();
+    
+    fill(strokeColor);
     stroke(strokeColor);
-    strokeWeight(3);
+    strokeWeight(5);
 
-    push();
-    fill(0);
-    strokeWeight(0);
-    stroke(color(0, 0));
-    textAlign(CENTER);
-    text('click and drag', 0, 400 - height);
-    pop();
+    drawMandala();
+    drawTrails();
 }
 
 function keyPressed() {
