@@ -1,11 +1,12 @@
 let linesNumber = 8;
 let angle;
-let canvas;
 
 let bgColor;
 let strokeColor;
 
 let trailHistory = [];
+
+let button;
 
 function setup() {
 
@@ -13,6 +14,10 @@ function setup() {
     let width = canvasDiv.offsetWidth - 272;
     let height = canvasDiv.offsetHeight;
     let sketchCanvas = createCanvas(width, height);
+
+
+    button = select('#but');
+    button.mousePressed(changeColor);
 
     sketchCanvas.parent("p5-holder");
 
@@ -23,7 +28,9 @@ function setup() {
     angle = 2 * PI / linesNumber;
 }
 
-
+function changeColor() {
+    strokeColor = color(random(255), random(255), random(255));
+}
 
 function drawMandala() {
 
@@ -81,6 +88,7 @@ function draw() {
 
     drawMandala();
     drawTrails();
+
 }
 
 function keyPressed() {
