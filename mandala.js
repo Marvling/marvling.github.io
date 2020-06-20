@@ -76,6 +76,8 @@ function mouseReleased() {
     trailHistory = []
 }
 
+//Make it so that the image stays on the screen after the mouse is released
+
 
 function draw() {
 
