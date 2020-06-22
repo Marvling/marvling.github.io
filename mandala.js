@@ -6,7 +6,11 @@ let strokeColor;
 
 let trailHistory = [];
 
-let button;
+let buttonSave;
+let buttonColorW;
+let buttonColorY;
+let buttonColorP;
+let buttonColorG;
 
 function setup() {
 
@@ -14,12 +18,19 @@ function setup() {
     let width = canvasDiv.offsetWidth - 272;
     let height = canvasDiv.offsetHeight;
     let sketchCanvas = createCanvas(width, height);
-
-
-    button = select('#but');
-    button.mousePressed(changeColor);
-
     sketchCanvas.parent("p5-holder");
+
+    buttonSave = select('#p5-save');
+    buttonSave.mousePressed(buttonSaveImage);
+
+    buttonColorW = select('#p5-c-white');
+    buttonColorW.mousePressed(buttonChangeColorWhite);
+    buttonColorY = select('#p5-c-yellow');
+    buttonColorY.mousePressed(buttonChangeColorYellow);
+    buttonColorP = select('#p5-c-purple');
+    buttonColorP.mousePressed(buttonChangeColorPurple);
+    buttonColorG = select('#p5-c-green');
+    buttonColorG.mousePressed(buttonChangeColorGreen);
 
     translate(width / 2, height / 2)
     bgColor = color('#d2d6d6');
@@ -28,8 +39,38 @@ function setup() {
     angle = 2 * PI / linesNumber;
 }
 
-function changeColor() {
-    strokeColor = color(random(255), random(255), random(255));
+function buttonChangeColorWhite() {
+    let element = document.querySelector('#p5-c-white')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorPurple() {
+    let element = document.querySelector('#p5-c-purple')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorYellow() {
+    let element = document.querySelector('#p5-c-yellow')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorGreen() {
+
+    let element = document.querySelector('#p5-c-green')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+
+function buttonSaveImage() {
+    saveCanvas(canvas, 'mandal', 'png')
 }
 
 function drawMandala() {
@@ -90,7 +131,6 @@ function draw() {
 
     drawMandala();
     drawTrails();
-
 }
 
 function keyPressed() {
