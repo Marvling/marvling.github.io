@@ -79,10 +79,10 @@ function drawMandala() {
             // noStroke();
             rotate(angle);
 
-            beginShape(LINES);
-            vertex(mouseX - width / 2, mouseY - height / 2);
-            vertex(pmouseX - width / 2, pmouseY - height / 2);
-            endShape();
+            // beginShape(LINES);
+            // vertex(mouseX - width / 2, mouseY - height / 2);
+            // vertex(pmouseX - width / 2, pmouseY - height / 2);
+            // endShape();
 
             let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
             trailHistory.push(trailData);
@@ -101,21 +101,12 @@ function drawTrails() {
         rotate(angle);
 
 
-        if (trailHistory.length > 0) {
-            beginShape(LINES);
-            let pos = trailHistory[0];
-            // console.log(pos);
-            vertex(pos.x, pos.y)
-            endShape();
+        beginShape(LINES);
+        for (let i = 0; i < trailHistory.length; i++) {
+            let pos = trailHistory[i];
+            vertex(pos.x, pos.y);
         }
-
-        // beginShape(LINES);
-        // for (let i = 0; i < trailHistory.length; i++) {
-        //     let pos = trailHistory[i];
-        //     vertex(pos.x, pos.y);
-        // }
-        // endShape();
-
+        endShape();
     }
 }
 
