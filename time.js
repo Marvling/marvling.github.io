@@ -6,11 +6,9 @@ let button2;
 
 let looping = true;
 
-let getTime;
-let getMilli;
-let getSecond;
-let getMinute;
-let getHour;
+
+let k;
+
 
 function setup() {
 
@@ -18,8 +16,12 @@ function setup() {
     let width = canvasDiv.offsetWidth - 272;
     let height = canvasDiv.offsetHeight;
     let sketchCanvas = createCanvas(width, height);
-
     sketchCanvas.parent("p5-holder");
+
+    getTime = new Date();
+    getMilli = getTime.getMilliseconds();
+
+
     bgColor = color('#d2d6d6');
     fillColor = color('#7b7ebc');
 
@@ -57,12 +59,6 @@ function drawFillDiamondTime(centerX, centerY, fullHeight, duration, decimal = 1
     push();
     translate(centerX, centerY);
 
-    if (duration == getMilli) {
-        stop1 = 1000
-    }
-    else {
-        stop1 = 60
-    }
 
     let yRange = map(duration, stop1, 0, -1 * fullHeight / 2, fullHeight / 2);
     let yRangeStop = map(duration, stop1, 0, -1 * fullHeight / 2, fullHeight / 2);
@@ -516,11 +512,7 @@ function draw() {
 
     background(bgColor);
 
-    getTime = new Date();
-    getMilli = getTime.getMilliseconds();
-    getSecond = getTime.getSeconds();
-    getMinute = getTime.getMinutes();
-    getHour = getTime.getHours();
+    let d = new Date();
 
     let circleX = width / 2;
     let circleY = height / 2;
@@ -529,8 +521,17 @@ function draw() {
     drawClock1(circleX + 0, circleY, circleR, second);
     drawClock10Alt(circleX - 100, circleY, circleR, second);
 
-
     //TODO: circleR value offets the fill and outline
+
+    k = d.getTime();
+
+    a = (k % 1000 + 1) / 1000 * width;
+    b = (k % 10000 + 1) / 10000 * width;
+    // console.log(k);
+    console.log(d.getTime())
+
+    line(0, 120, a, 120);
+    line(0, 100, b, 100);
 
     //OUTLINE
     for (let i = 0; i < 4; i++) {

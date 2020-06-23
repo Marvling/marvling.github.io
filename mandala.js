@@ -68,7 +68,6 @@ function buttonChangeColorGreen() {
 
     strokeColor = styleColor
 }
-
 function buttonSaveImage() {
     saveCanvas(canvas, 'mandal', 'png')
 }
@@ -80,10 +79,10 @@ function drawMandala() {
             // noStroke();
             rotate(angle);
 
-            // beginShape(LINES);
-            // vertex(mouseX - width/2, mouseY - height/2);
-            // vertex(pmouseX - width/2, pmouseY - height/2);
-            // endShape();
+            beginShape(LINES);
+            vertex(mouseX - width / 2, mouseY - height / 2);
+            vertex(pmouseX - width / 2, pmouseY - height / 2);
+            endShape();
 
             let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
             trailHistory.push(trailData);
@@ -101,14 +100,22 @@ function drawTrails() {
     for (let i = 0; i < linesNumber; i++) {
         rotate(angle);
 
-        beginShape(LINES);
-        for (let i = 0; i < trailHistory.length; i++) {
-            // beginShape(LINES);
-            let pos = trailHistory[i];
-            vertex(pos.x, pos.y);
-            // endShape();
+
+        if (trailHistory.length > 0) {
+            beginShape(LINES);
+            let pos = trailHistory[0];
+            // console.log(pos);
+            vertex(pos.x, pos.y)
+            endShape();
         }
-        endShape();
+
+        // beginShape(LINES);
+        // for (let i = 0; i < trailHistory.length; i++) {
+        //     let pos = trailHistory[i];
+        //     vertex(pos.x, pos.y);
+        // }
+        // endShape();
+
     }
 }
 
@@ -118,14 +125,11 @@ function mouseReleased() {
 }
 
 //Make it so that the image stays on the screen after the mouse is released
-
-
 function draw() {
 
     background(bgColor);
     translate(width / 2, height / 2);
 
-    fill(strokeColor);
     stroke(strokeColor);
     strokeWeight(5);
 
