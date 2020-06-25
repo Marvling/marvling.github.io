@@ -1,5 +1,5 @@
 let bgColor;
-let fillColor;
+let defaultFillColor;
 
 let button1;
 let button2;
@@ -15,7 +15,7 @@ function setup() {
     sketchCanvas.parent("p5-holder");
 
     bgColor = color('#d2d6d6');
-    fillColor = color('#7b7ebc');
+    defaultFillColor = color('#7b7ebc');
 
     button1 = select('#but');
     button1.mousePressed(changeColor);
@@ -42,10 +42,10 @@ function playPause() {
 
 //Button for changing the color
 function changeColor() {
-    fillColor = color(random(255), random(255), random(255));
+    defaultFillColor = color(random(255), random(255), random(255));
 }
 
-function drawStrokeDiamond(centerX, centerY, side, strokeColor) {
+function drawStrokeDiamond(centerX, centerY, side, strokeColor = 255) {
 
     let diamondEdge = side * cos(PI / 4);
 
@@ -60,7 +60,7 @@ function drawStrokeDiamond(centerX, centerY, side, strokeColor) {
 
 }
 
-function drawFillDimaond(centerX, centerY, side, fillColor) {
+function drawFillDimaond(centerX, centerY, side, fillColor = defaultFillColor) {
 
     let diamondEdge = side * cos(PI / 4);
 
@@ -75,7 +75,7 @@ function drawFillDimaond(centerX, centerY, side, fillColor) {
 
 }
 
-function drawFillDiamondTime(centerX, centerY, fullHeight, duration, maxMilli) {
+function drawFillDiamondTime(centerX, centerY, fullHeight, duration, maxMilli, fillColor = defaultFillColor) {
 
     push();
     translate(centerX, centerY);
@@ -107,21 +107,27 @@ function drawFillDiamondTime(centerX, centerY, fullHeight, duration, maxMilli) {
     pop();
 }
 
-function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit) {
+function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit, fillColor) {
 
+    //her case de ayrıca outlıne çizsin outlinın rengi fill ile aynı renk olsun eğer dolmaktaysa
 
+    for (let i = 0; i < 4; i++) {
+        drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, 255);
+    }
     switch (digit) {
         case 0:
             for (let i = 0; i < 4; i++) {
                 if (i == 0) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 1:
             for (let i = 0; i < 4; i++) {
                 if (i == 1) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
@@ -129,16 +135,19 @@ function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit) {
             for (let i = 0; i < 4; i++) {
                 if (i == 0) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 1) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 3:
             for (let i = 0; i < 4; i++) {
                 if (i == 2) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
 
@@ -146,30 +155,36 @@ function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit) {
         case 4:
             for (let i = 0; i < 4; i++) {
                 if (i == 0) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 2) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 5:
             for (let i = 0; i < 4; i++) {
                 if (i == 1) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 2) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 6:
             for (let i = 0; i < 4; i++) {
                 if (i == 0) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 1 || i == 2) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
@@ -177,27 +192,32 @@ function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit) {
 
             for (let i = 0; i < 4; i++) {
                 if (i == 3) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 8:
             for (let i = 0; i < 4; i++) {
                 if (i == 0) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 3) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
         case 9:
             for (let i = 0; i < 4; i++) {
                 if (i == 1) {
-                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli);
+                    drawFillDiamondTime(centerX, centerY - (i * fullHeight), fullHeight, duration, maxMilli, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
                 if (i == 3) {
                     drawFillDimaond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
+                    drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, fillColor);
                 }
             }
             break;
@@ -212,31 +232,24 @@ function draw() {
     let systemTime = new Date();
     let k = systemTime.getTime();
 
+    /* Color Theme Swatches in Hex */
+    let c1 = color('#6368C7');
+    let c2 = color('#3847C7');
+    let c3 = color('#8FC767');
+    let c4 = color('#F1F545');
+
     background(bgColor);
 
-    let circleX = width / 2;
-    let circleY = height / 2;
-    let circleR = 100;
+    let circleX = 400;
+    let circleY = 500;
+    const circleR = 100;
 
-    drawClock(circleX, circleY, circleR, k % 1000, 1000, (k % 10000 - k % 1000) / 1000);
-    drawClock(circleX - 50, circleY + 50, circleR, k % 10000, 10000, (k % 100000 - k % 10000) / 10000);
-    // drawFillDiamondTime(circleX - 100, circleY, circleR, k % 10000, maxMilli = 10000);
-    drawFillDiamondTime(circleX - 200, circleY, circleR, k % 60000, maxMilli = 60000);
-    drawFillDiamondTime(circleX - 300, circleY, circleR, k % 600000, maxMilli = 600000);
+    // drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit, fillColor)
+    drawClock(circleX, circleY, circleR, k % 1000, 1000, (k % 10000 - k % 1000) / 1000, c2);
+    drawClock(circleX - 53, circleY + 50, circleR, k % 10000, 10000, (k % 100000 - k % 10000) / 10000, c2);
+    drawClock(circleX - 106, circleY, circleR, k % 60000, 60000, systemTime.getMinutes() % 10, c3);
+    drawClock(circleX - 159, circleY + 50, circleR, k % 600000, 600000, (systemTime.getMinutes() - (systemTime.getMinutes() % 10)) / 10, c3);
+    drawClock(circleX - 212, circleY, circleR, k % 6000000, 6000000, systemTime.getHours() % 10, c4);
+    drawClock(circleX - 265, circleY + 50, circleR, k % 60000000, 60000000, (systemTime.getHours() - (systemTime.getHours() % 10)) / 10, c4);
 
-
-
-    a = (k % 1000 + 1) / 1000 * width;
-    b = (k % 10000 + 1) / 10000 * width;
-
-    console.log((k % 10000 - k % 1000) / 1000);
-
-
-    line(0, 120, a, 120);
-    line(0, 100, b, 100);
-
-    //OUTLINE
-    for (let i = 0; i < 4; i++) {
-        drawStrokeDiamond(circleX, circleY - (i * circleR), circleR, 255);
-    }
 }
