@@ -251,5 +251,13 @@ function draw() {
     drawClock(circleX - 159, circleY + 50, circleR, k % 600000, 600000, (systemTime.getMinutes() - (systemTime.getMinutes() % 10)) / 10, c3);
     drawClock(circleX - 212, circleY, circleR, k % 6000000, 6000000, systemTime.getHours() % 10, c4);
     drawClock(circleX - 265, circleY + 50, circleR, k % 60000000, 60000000, (systemTime.getHours() - (systemTime.getHours() % 10)) / 10, c4);
+    push();
+    fill(0);
+    textAlign(CENTER);
+    textSize(36)
+    text(nf(systemTime.getHours(), 2), circleX - 2.5 * circleR, circleY + 1.5 * circleR);
+    text(nf(systemTime.getMinutes(), 2), circleX - 1.5 * circleR, circleY + 1.5 * circleR);
+    text(nf(systemTime.getSeconds(), 2), circleX - 0.5 * circleR, circleY + 1.5 * circleR);
+    pop();
 
 }
