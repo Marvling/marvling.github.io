@@ -6,11 +6,7 @@ let strokeColor;
 
 let trailHistory = [];
 
-let buttonSave;
-let buttonColorW;
-let buttonColorY;
-let buttonColorP;
-let buttonColorG;
+let buttonModeSelect;
 let disappearingTrail;
 
 function toggleDisappearingTrail() {
@@ -26,8 +22,8 @@ function setup() {
     let sketchCanvas = createCanvas(width, height);
     sketchCanvas.parent("p5-holder");
 
-    buttonColorG = select('#p5-mode');
-    buttonColorG.mousePressed(toggleDisappearingTrail);
+    buttonModeSelect = select('#p5-mode');
+    buttonModeSelect.mousePressed(toggleDisappearingTrail);
 
     translate(width / 2, height / 2)
     bgColor = color('#d2d6d6');
