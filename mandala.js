@@ -26,18 +26,7 @@ function setup() {
     let sketchCanvas = createCanvas(width, height);
     sketchCanvas.parent("p5-holder");
 
-    buttonSave = select('#p5-save');
-    buttonSave.mousePressed(buttonSaveImage);
-
-    buttonColorW = select('#p5-c-white');
-    buttonColorW.mousePressed(buttonChangeColorWhite);
-    buttonColorY = select('#p5-c-yellow');
-    buttonColorY.mousePressed(buttonChangeColorYellow);
-    buttonColorP = select('#p5-c-purple');
-    buttonColorP.mousePressed(buttonChangeColorPurple);
-    // buttonColorG = select('#p5-c-green');
-    // buttonColorG.mousePressed(buttonChangeColorGreen);
-    buttonColorG = select('#p5-c-green');
+    buttonColorG = select('#p5-mode');
     buttonColorG.mousePressed(toggleDisappearingTrail);
 
     translate(width / 2, height / 2)
@@ -80,23 +69,17 @@ function buttonSaveImage() {
     saveCanvas(canvas, 'mandal', 'png')
 }
 
-function drawMandala() {
+function getTrailPoints() {
     if (mouseIsPressed && mouseX > 0) {
         for (let i = 0; i < linesNumber; i++) {
-            // noStroke();
             rotate(angle);
-
-            // beginShape(LINES);
-            // vertex(mouseX - width / 2, mouseY - height / 2);
-            // vertex(pmouseX - width / 2, pmouseY - height / 2);
-            // endShape();
 
             let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
             trailHistory.push(trailData);
 
 
             if (disappearingTrail) {
-                if (trailHistory.length > 299) {
+                if (trailHistory.length > 149) {
                     trailHistory.shift();
                 }
             }
@@ -104,11 +87,10 @@ function drawMandala() {
     }
 }
 
-function drawTrails() {
+function drawTrail() {
 
     for (let i = 0; i < linesNumber; i++) {
         rotate(angle);
-
 
         beginShape();
         for (let i = 0; i < trailHistory.length; i++) {
@@ -125,7 +107,6 @@ function mouseReleased() {
     }
 }
 
-//Make it so that the image stays on the screen after the mouse is released
 function draw() {
 
     background(bgColor);
@@ -135,16 +116,6 @@ function draw() {
     strokeWeight(5);
     noFill();
 
-    drawMandala();
-    drawTrails();
-}
-
-function keyPressed() {
-    if (keyCode === LEFT_ARROW) {
-        strokeColor = color(255, 204, 0)
-    } else if (keyCode === RIGHT_ARROW) {
-        strokeColor = color(187, 246, 250);
-    } else if (keyCode === UP_ARROW) {
-        saveCanvas(canvas, 'mandal', 'png')
-    }
+    getTrailPoints();
+    drawTrail();
 }

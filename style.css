@@ -100,7 +100,14 @@ ul#pages li {
     margin-top: 0.5em;
 }
 
-.p5-color-button{
+#p5-mode{
+    font-size: 16px;
+    top: 0.2px;
+}
+
+/* mandalina color buttons */
+
+/* .p5-color-button{
     font-size: 88px;
     position: absolute;
     margin-top: -24px;
@@ -121,7 +128,7 @@ ul#pages li {
 }
 #p5-c-white{
     color: #ffffff;
-}
+} */
 
 /* content styling */
 .tab-content {

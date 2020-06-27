@@ -19,14 +19,8 @@ function setup() {
 
     bgColor = color('#d2d6d6');
     defaultFillColor = color('#7b7ebc');
-
-    button1 = select('#but');
-    button1.mousePressed(changeColor);
-
-    button2 = select('#dur');
-    button2.mousePressed(playPause);
 }
-//Button for stopping the loop
+
 function playPause() {
     if (looping) {
         noLoop();
@@ -41,7 +35,6 @@ function playPause() {
 
 }
 
-//Button for changing the color
 function changeColor() {
     defaultFillColor = color(random(255), random(255), random(255));
 }
@@ -109,8 +102,6 @@ function drawFillDiamondTime(centerX, centerY, fullHeight, duration, maxMilli, f
 }
 
 function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit, fillColor) {
-
-    //her case de ayrıca outlıne çizsin outlinın rengi fill ile aynı renk olsun eğer dolmaktaysa
 
     for (let i = 0; i < 4; i++) {
         drawStrokeDiamond(centerX, centerY - (i * fullHeight), fullHeight, 255);
@@ -233,16 +224,14 @@ function draw() {
     let systemTime = new Date();
     let k = systemTime.getTime();
 
-    /* Color Theme Swatches in Hex */
     let c1 = color('#7B7EBD');
-
     let c11 = lerpColor(c1, color('#FFFFFF'), 0.4); //light ((seconds))
     let c12 = lerpColor(c1, color('#000000'), 0.3); //dark (hours)
 
     background(bgColor);
 
     let circleX = 400;
-    let circleY = 500;
+    let circleY = 450;
     const circleR = 100;
 
     drawClock(circleX, circleY, circleR, k % 1000, 1000, (k % 10000 - k % 1000) / 1000, c11);
@@ -252,6 +241,7 @@ function draw() {
     drawClock(circleX - 212, circleY, circleR, k % 6000000, 6000000, systemTime.getHours() % 10, c12);
     drawClock(circleX - 265, circleY + 50, circleR, k % 60000000, 60000000, (systemTime.getHours() - (systemTime.getHours() % 10)) / 10, c12);
 
+    // Text
     push();
     fill(0);
     textAlign(CENTER);
