@@ -1,8 +1,22 @@
 let linesNumber = 8;
 let angle;
-let canvas;
 
+let bgColor;
 let strokeColor;
+
+let trailHistory = [];
+
+let buttonSave;
+let buttonColorW;
+let buttonColorY;
+let buttonColorP;
+let buttonColorG;
+let disappearingTrail;
+
+function toggleDisappearingTrail() {
+    disappearingTrail = !disappearingTrail;
+    trailHistory = [];
+}
 
 function setup() {
 
@@ -10,60 +24,98 @@ function setup() {
     let width = canvasDiv.offsetWidth - 272;
     let height = canvasDiv.offsetHeight;
     let sketchCanvas = createCanvas(width, height);
+    sketchCanvas.parent("p5-holder");
 
-    sketchCanvas.parent("mandalina");
+    buttonColorG = select('#p5-mode');
+    buttonColorG.mousePressed(toggleDisappearingTrail);
 
-    let bgColor = color('#d2d6d6')
-    background(bgColor);
-
-    angle = 2 * PI / linesNumber;
+    translate(width / 2, height / 2)
+    bgColor = color('#d2d6d6');
     strokeColor = color('#7b7ebc');
 
-
+    angle = 2 * PI / linesNumber;
 }
 
-function mouseDragged() {
+function buttonChangeColorWhite() {
+    let element = document.querySelector('#p5-c-white')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorPurple() {
+    let element = document.querySelector('#p5-c-purple')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorYellow() {
+    let element = document.querySelector('#p5-c-yellow')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonChangeColorGreen() {
+
+    let element = document.querySelector('#p5-c-green')
+    let style = getComputedStyle(element)
+    let styleColor = style.color
+
+    strokeColor = styleColor
+}
+function buttonSaveImage() {
+    saveCanvas(canvas, 'mandal', 'png')
+}
+
+function getTrailPoints() {
+    if (mouseIsPressed && mouseX > 0) {
+        for (let i = 0; i < linesNumber; i++) {
+            rotate(angle);
+
+            let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
+            trailHistory.push(trailData);
+
+
+            if (disappearingTrail) {
+                if (trailHistory.length > 149) {
+                    trailHistory.shift();
+                }
+            }
+        }
+    }
+}
+
+function drawTrail() {
+
     for (let i = 0; i < linesNumber; i++) {
         rotate(angle);
-        if (i % 2 == 0) {
-            beginShape(LINES);
-            vertex(mouseX - width / 2, mouseY - height / 2);
-            vertex(pmouseX - width / 2, pmouseY - height / 2);
-            endShape();
-        }
-        else {
-            beginShape(LINES);
-            vertex(-(mouseX - width / 2), mouseY - height / 2);
-            vertex(-(pmouseX - width / 2), pmouseY - height / 2);
-            endShape();
-        }
 
+        beginShape();
+        for (let i = 0; i < trailHistory.length; i++) {
+            let pos = trailHistory[i];
+            vertex(pos.x, pos.y);
+        }
+        endShape();
+    }
+}
+
+function mouseReleased() {
+    if (disappearingTrail) {
+        trailHistory = [];
     }
 }
 
 function draw() {
 
+    background(bgColor);
     translate(width / 2, height / 2);
 
-    noFill();
     stroke(strokeColor);
-    strokeWeight(3);
+    strokeWeight(5);
+    noFill();
 
-    push();
-    fill(0);
-    strokeWeight(0);
-    stroke(color(0, 0));
-    textAlign(CENTER);
-    text('click and drag', 0, 400 - height);
-    pop();
-}
-
-function keyPressed() {
-    if (keyCode === LEFT_ARROW) {
-        strokeColor = color(255, 204, 0)
-    } else if (keyCode === RIGHT_ARROW) {
-        strokeColor = color(187, 246, 250);
-    } else if (keyCode === UP_ARROW) {
-        saveCanvas(canvas, 'mandal', 'png')
-    }
+    getTrailPoints();
+    drawTrail();
 }

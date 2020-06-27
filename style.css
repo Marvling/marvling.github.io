@@ -100,6 +100,36 @@ ul#pages li {
     margin-top: 0.5em;
 }
 
+#p5-mode{
+    font-size: 16px;
+    top: 0.2px;
+}
+
+/* mandalina color buttons */
+
+/* .p5-color-button{
+    font-size: 88px;
+    position: absolute;
+    margin-top: -24px;
+    margin-left: -10px;
+    -webkit-text-stroke: 1px black;
+}
+#p5-c-purple{
+    color: #7b7ebc;
+    margin-left: 40px;
+}
+#p5-c-yellow{
+    color: rgb(216, 212, 18);
+    margin-left: 90px;
+}
+#p5-c-green{
+    color: #81BD68;
+    margin-left: 140px;
+}
+#p5-c-white{
+    color: #ffffff;
+} */
+
 /* content styling */
 .tab-content {
 
@@ -128,8 +158,6 @@ ul#pages li {
     font-weight: 700;
     font-style: normal;
 }
-
-
 
 #p5-holder{
 
