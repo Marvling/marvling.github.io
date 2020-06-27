@@ -5,6 +5,9 @@ let button1;
 let button2;
 
 let looping = true;
+function preload() {
+    font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
+}
 
 function setup() {
 
@@ -22,8 +25,6 @@ function setup() {
 
     button2 = select('#dur');
     button2.mousePressed(playPause);
-
-    // frameRate(100);
 }
 //Button for stopping the loop
 function playPause() {
@@ -233,10 +234,10 @@ function draw() {
     let k = systemTime.getTime();
 
     /* Color Theme Swatches in Hex */
-    let c1 = color('#6368C7');
-    let c2 = color('#3847C7');
-    let c3 = color('#8FC767');
-    let c4 = color('#F1F545');
+    let c1 = color('#7B7EBD');
+
+    let c11 = lerpColor(c1, color('#FFFFFF'), 0.4); //light ((seconds))
+    let c12 = lerpColor(c1, color('#000000'), 0.3); //dark (hours)
 
     background(bgColor);
 
@@ -244,20 +245,23 @@ function draw() {
     let circleY = 500;
     const circleR = 100;
 
-    // drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit, fillColor)
-    drawClock(circleX, circleY, circleR, k % 1000, 1000, (k % 10000 - k % 1000) / 1000, c2);
-    drawClock(circleX - 53, circleY + 50, circleR, k % 10000, 10000, (k % 100000 - k % 10000) / 10000, c2);
-    drawClock(circleX - 106, circleY, circleR, k % 60000, 60000, systemTime.getMinutes() % 10, c3);
-    drawClock(circleX - 159, circleY + 50, circleR, k % 600000, 600000, (systemTime.getMinutes() - (systemTime.getMinutes() % 10)) / 10, c3);
-    drawClock(circleX - 212, circleY, circleR, k % 6000000, 6000000, systemTime.getHours() % 10, c4);
-    drawClock(circleX - 265, circleY + 50, circleR, k % 60000000, 60000000, (systemTime.getHours() - (systemTime.getHours() % 10)) / 10, c4);
+    drawClock(circleX, circleY, circleR, k % 1000, 1000, (k % 10000 - k % 1000) / 1000, c11);
+    drawClock(circleX - 53, circleY + 50, circleR, k % 10000, 10000, (k % 100000 - k % 10000) / 10000, c11);
+    drawClock(circleX - 106, circleY, circleR, k % 60000, 60000, systemTime.getMinutes() % 10, c1);
+    drawClock(circleX - 159, circleY + 50, circleR, k % 600000, 600000, (systemTime.getMinutes() - (systemTime.getMinutes() % 10)) / 10, c1);
+    drawClock(circleX - 212, circleY, circleR, k % 6000000, 6000000, systemTime.getHours() % 10, c12);
+    drawClock(circleX - 265, circleY + 50, circleR, k % 60000000, 60000000, (systemTime.getHours() - (systemTime.getHours() % 10)) / 10, c12);
+
     push();
     fill(0);
     textAlign(CENTER);
-    textSize(36)
-    text(nf(systemTime.getHours(), 2), circleX - 2.5 * circleR, circleY + 1.5 * circleR);
-    text(nf(systemTime.getMinutes(), 2), circleX - 1.5 * circleR, circleY + 1.5 * circleR);
-    text(nf(systemTime.getSeconds(), 2), circleX - 0.5 * circleR, circleY + 1.5 * circleR);
+    textSize(48);
+    textFont(font);
+    fill(255);
+    text(nf(systemTime.getHours(), 2), circleX - 2.25 * circleR, circleY + 1.75 * circleR);
+    text(':', circleX - 1.75 * circleR, circleY + 1.75 * circleR);
+    text(nf(systemTime.getMinutes(), 2), circleX - 1.25 * circleR, circleY + 1.75 * circleR);
+    text(':', circleX - 0.75 * circleR, circleY + 1.75 * circleR);
+    text(nf(systemTime.getSeconds(), 2), circleX - 0.25 * circleR, circleY + 1.75 * circleR);
     pop();
-
 }
