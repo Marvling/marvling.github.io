@@ -11,6 +11,12 @@ let buttonColorW;
 let buttonColorY;
 let buttonColorP;
 let buttonColorG;
+let disappearingTrail;
+
+function toggleDisappearingTrail() {
+    disappearingTrail = !disappearingTrail;
+    trailHistory = [];
+}
 
 function setup() {
 
@@ -29,8 +35,10 @@ function setup() {
     buttonColorY.mousePressed(buttonChangeColorYellow);
     buttonColorP = select('#p5-c-purple');
     buttonColorP.mousePressed(buttonChangeColorPurple);
+    // buttonColorG = select('#p5-c-green');
+    // buttonColorG.mousePressed(buttonChangeColorGreen);
     buttonColorG = select('#p5-c-green');
-    buttonColorG.mousePressed(buttonChangeColorGreen);
+    buttonColorG.mousePressed(toggleDisappearingTrail);
 
     translate(width / 2, height / 2)
     bgColor = color('#d2d6d6');
@@ -73,8 +81,7 @@ function buttonSaveImage() {
 }
 
 function drawMandala() {
-
-    if (mouseIsPressed) {
+    if (mouseIsPressed && mouseX > 0) {
         for (let i = 0; i < linesNumber; i++) {
             // noStroke();
             rotate(angle);
@@ -87,10 +94,12 @@ function drawMandala() {
             let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
             trailHistory.push(trailData);
 
-            if (trailHistory.length > 299) {
-                trailHistory.shift();
-            }
 
+            if (disappearingTrail) {
+                if (trailHistory.length > 299) {
+                    trailHistory.shift();
+                }
+            }
         }
     }
 }
@@ -101,7 +110,7 @@ function drawTrails() {
         rotate(angle);
 
 
-        beginShape(LINES);
+        beginShape();
         for (let i = 0; i < trailHistory.length; i++) {
             let pos = trailHistory[i];
             vertex(pos.x, pos.y);
@@ -111,8 +120,9 @@ function drawTrails() {
 }
 
 function mouseReleased() {
-    console.log('a');
-    trailHistory = []
+    if (disappearingTrail) {
+        trailHistory = [];
+    }
 }
 
 //Make it so that the image stays on the screen after the mouse is released
@@ -123,6 +133,7 @@ function draw() {
 
     stroke(strokeColor);
     strokeWeight(5);
+    noFill();
 
     drawMandala();
     drawTrails();
