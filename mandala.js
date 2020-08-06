@@ -9,12 +9,22 @@ let trailHistory = [];
 let buttonModeSelect;
 let disappearingTrail;
 
+function preload() {
+    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
+    //if running on local server un-comment the next line
+    // font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
+
+}
+
 function toggleDisappearingTrail() {
     disappearingTrail = !disappearingTrail;
     trailHistory = [];
 }
 
 function setup() {
+
+    textSize(32);
+
 
     let canvasDiv = document.getElementById('p5-holder');
     let width = canvasDiv.offsetWidth - 272;
@@ -104,9 +114,15 @@ function mouseReleased() {
 }
 
 function draw() {
-
     background(bgColor);
     translate(width / 2, height / 2);
+
+    push();
+    noStroke();
+    fill(255);
+    text('click and drag', -50, height / -2 + 50);
+    pop();
+
 
     stroke(strokeColor);
     strokeWeight(5);

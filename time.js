@@ -7,7 +7,7 @@ let button2;
 let looping = true;
 function preload() {
     font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
-    //if running on local server
+    //if running on local server un-comment the next line
     //font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
 }
 
