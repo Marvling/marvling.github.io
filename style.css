@@ -159,6 +159,11 @@ ul#pages li {
     font-style: normal;
 }
 
+.tab-content ul li a{
+    text-decoration: underline;
+    color: inherit;
+}
+
 #p5-holder{
 
     margin-left: 0px;
