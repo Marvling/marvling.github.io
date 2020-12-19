@@ -43,8 +43,6 @@ function draw() {
 
 
     for (let i = 0; i < walkers.length; i++) {
-        console.log('haci?');
-
 
         walkers[i].moveCircle();
         let cFill = cArray[i % 3]
