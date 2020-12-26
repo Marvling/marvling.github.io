@@ -4,9 +4,15 @@
     margin: 0px
 }
 
-body {
+html{
     height: 100%;
+}
+
+body {
+
+    min-height: 100%;
     background-color: #d2d6d6;
+    position: relative;
 }
 
 
@@ -18,9 +24,9 @@ a {
 
 .nav {
     width: 240px;
-    height: 100vh;
+    height: 100%;
     float: left;
-    position: static;
+    position: absolute;
     padding-left: 24px;
     padding-right: 8px;
     background-color: #7b7ebc;

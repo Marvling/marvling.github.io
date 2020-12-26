@@ -5,19 +5,22 @@ let button1;
 let button2;
 
 let looping = true;
+
+const canvasDiv = document.getElementById('p5-holder');
+const width = canvasDiv.offsetWidth - 272;
+const height = canvasDiv.offsetHeight;
+
 function preload() {
-    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
+    // font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
     //if running on local server un-comment the next line
-    // font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
+    font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
 }
+
 
 function setup() {
 
-    let canvasDiv = document.getElementById('p5-holder');
-    let width = canvasDiv.offsetWidth - 272;
-    let height = canvasDiv.offsetHeight;
-    let sketchCanvas = createCanvas(width, height);
-    sketchCanvas.parent("p5-holder");
+    let canvas = createCanvas(1000, 1000);
+    canvas.parent("p5-holder");
 
     bgColor = color('#d2d6d6');
     defaultFillColor = color('#7b7ebc');
