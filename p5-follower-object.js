@@ -1,3 +1,5 @@
+//This was my first attempt at understanding object-oriented programming in JavaScript
+
 
 class walker {
     constructor() {

@@ -12,7 +12,7 @@ const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0)
 const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
 
 function preload() {
-    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
+    // font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
     //if running on local server un-comment the next line
     // font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
 }
@@ -252,7 +252,7 @@ function draw() {
     fill(0);
     textAlign(CENTER);
     textSize(48);
-    textFont(font);
+    textFont('Ubuntu Mono');
     fill(255);
     text(nf(systemTime.getHours(), 2), circleX - 2.25 * circleR, circleY + 1.75 * circleR);
     text(':', circleX - 1.75 * circleR, circleY + 1.75 * circleR);

@@ -9,10 +9,6 @@ let trailHistory = [];
 let buttonModeSelect;
 let disappearingTrail;
 
-// //Font settings
-const fontOnlineLoc = 'marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf';
-const fontOfflineLoc = 'Assets/fonts/UbuntuMono-Regular.ttf'
-
 //Canvas settigns
 const navbar = document.getElementsByClassName('nav');
 const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0);
@@ -24,13 +20,6 @@ function toggleDisappearingTrail() {
     trailHistory = [];
 }
 
-function preload() {
-    font = loadFont(fontOnlineLoc);
-    //next line is for running on local server
-    // font = loadFont(fontOfflineLoc);
-
-}
-
 
 function setup() {
 
@@ -39,10 +28,13 @@ function setup() {
     let canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent("p5-holder");
 
-    // buttonModeSelect = select('#p5-mode');
-    // buttonModeSelect.mousePressed(toggleDisappearingTrail);
 
-    translate(width / 2, height / 2)
+    // translate(width / 2, height / 2);
+
+    buttonModeSelect = createButton('change mode');
+    buttonModeSelect.position(canvasWidth, 40)
+    buttonModeSelect.mousePressed(toggleDisappearingTrail);
+
     bgColor = color('#d2d6d6');
     strokeColor = color('#7b7ebc');
 
