@@ -14,7 +14,7 @@ const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0)
 const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
 
 function preload() {
-    // font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
+    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
     //if running on local server un-comment the next line
     font = loadFont('./assets/fonts/UbuntuMono-Regular.ttf');
 }
