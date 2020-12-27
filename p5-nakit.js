@@ -6,9 +6,10 @@ let button2;
 
 let looping = true;
 
-const canvasDiv = document.getElementById('p5-holder');
-const width = canvasDiv.offsetWidth - 272;
-const height = canvasDiv.offsetHeight;
+
+const navbar = document.getElementsByClassName('nav');
+const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0);
+const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
 
 function preload() {
     // font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
@@ -19,7 +20,7 @@ function preload() {
 
 function setup() {
 
-    let canvas = createCanvas(1000, 1000);
+    let canvas = createCanvas(canvasWidth, canvasHeight);
     canvas.parent("p5-holder");
 
     bgColor = color('#d2d6d6');

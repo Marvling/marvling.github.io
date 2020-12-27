@@ -9,11 +9,14 @@ let trailHistory = [];
 let buttonModeSelect;
 let disappearingTrail;
 
-function preload() {
-    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
-    //if running on local server un-comment the next line
-    // font = loadFont('assets/fonts/UbuntuMono-Regular.ttf');
+const navbar = document.getElementsByClassName('nav');
+const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0);
+const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
 
+function preload() {
+    // font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
+    //if running on local server un-comment the next line
+    font = loadFont('./assets/fonts/UbuntuMono-Regular.ttf');
 }
 
 function toggleDisappearingTrail() {
@@ -25,15 +28,11 @@ function setup() {
 
     textSize(32);
 
+    let canvas = createCanvas(canvasWidth, canvasHeight);
+    canvas.parent("p5-holder");
 
-    let canvasDiv = document.getElementById('p5-holder');
-    let width = canvasDiv.offsetWidth - 272;
-    let height = canvasDiv.offsetHeight;
-    let sketchCanvas = createCanvas(width, height);
-    sketchCanvas.parent("p5-holder");
-
-    buttonModeSelect = select('#p5-mode');
-    buttonModeSelect.mousePressed(toggleDisappearingTrail);
+    // buttonModeSelect = select('#p5-mode');
+    // buttonModeSelect.mousePressed(toggleDisappearingTrail);
 
     translate(width / 2, height / 2)
     bgColor = color('#d2d6d6');
@@ -83,7 +82,6 @@ function getTrailPoints() {
             let trailData = createVector(mouseX - width / 2, mouseY - height / 2);
             trailHistory.push(trailData);
 
-
             if (disappearingTrail) {
                 if (trailHistory.length > 149) {
                     trailHistory.shift();
@@ -122,7 +120,6 @@ function draw() {
     fill(255);
     text('click and drag', -50, height / -2 + 50);
     pop();
-
 
     stroke(strokeColor);
     strokeWeight(5);

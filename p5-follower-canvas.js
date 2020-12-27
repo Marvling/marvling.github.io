@@ -8,21 +8,22 @@ let cPurple;
 let cYellow;
 let cArray;
 
+const navbar = document.getElementsByClassName('nav');
+const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0);
+const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
+
 function setup() {
-    let canvasDiv = document.getElementById('p5-holder');
-    let width = canvasDiv.offsetWidth - 272;
-    let height = canvasDiv.offsetHeight;
-    let sketchCanvas = createCanvas(width, height);
-    sketchCanvas.parent("p5-holder");
+
+    let canvas = createCanvas(canvasWidth, canvasHeight);
+    canvas.parent("p5-holder");
 
     a = new walker();
 
     cGreen = color(0, 200, 80, 80);
     cPurple = color(99, 104, 199, 80);
     cYellow = color(241, 245, 69, 80);
+
     cArray = [cGreen, cPurple, cYellow]
-
-
 }
 function mouseClicked() {
     walkers.push(new walker());
