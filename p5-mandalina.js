@@ -9,20 +9,28 @@ let trailHistory = [];
 let buttonModeSelect;
 let disappearingTrail;
 
+// //Font settings
+const fontOnlineLoc = 'marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf';
+const fontOfflineLoc = 'Assets/fonts/UbuntuMono-Regular.ttf'
+
+//Canvas settigns
 const navbar = document.getElementsByClassName('nav');
 const canvasHeight = Math.max(navbar.clientHeight || 0, window.innerHeight || 0);
 const canvasWidth = Math.max(navbar.clientWidth || 0, window.innerWidth || 0) - 272;
 
-function preload() {
-    font = loadFont('marvling.github.io/Assets/fonts/UbuntuMono-Regular.ttf');
-    //if running on local server un-comment the next line
-    font = loadFont('./assets/fonts/UbuntuMono-Regular.ttf');
-}
 
 function toggleDisappearingTrail() {
     disappearingTrail = !disappearingTrail;
     trailHistory = [];
 }
+
+function preload() {
+    font = loadFont(fontOnlineLoc);
+    //next line is for running on local server
+    // font = loadFont(fontOfflineLoc);
+
+}
+
 
 function setup() {
 
