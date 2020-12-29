@@ -1,4 +1,4 @@
-@charset 'utf-16';
+@charset 'utf-8';
 
 * {
     margin: 0px
@@ -104,11 +104,6 @@ ul#pages {
 
 ul#pages li {
     margin-top: 0.5em;
-}
-
-#p5-mode{
-    font-size: 16px;
-    top: 0.2px;
 }
 
 /* mandalina color buttons */
@@ -242,7 +237,7 @@ ul#pages li {
     color: #ffffff;
     background-color: #7b7ebc;
     width: 184px;
-    /* height: 120px; */
+    height: 120px;
 
     padding-top: 16px;
     padding-bottom: 32px;
