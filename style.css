@@ -136,7 +136,8 @@ ul#pages li {
 
     margin-left: 320px;
     padding-top: 128px;
-    width: 100%;
+    /* width: 100%; */
+    /* width property may couse problems */
 
     font-size: 16px;
     font-family: proxima-nova, sans-serif;
@@ -204,11 +205,19 @@ ul#pages li {
     vertical-align: bottom;
     position: relative; 
 
-    backdrop-filter: grayscale(100%);
-    background-image: url(./Assets/Necro/2.gif);
+    background-size: cover;
+
+    /* backdrop-filter: grayscale(100%); */
+    /* background-image: url(./Assets/Necro/2.gif); */
 
 }
-.filter{
+
+.ff-canvas{
+    filter: grayscale(100%);
+}
+
+
+#filter{
     position: inherit;
     height: inherit;
     width: inherit;
@@ -216,11 +225,17 @@ ul#pages li {
     
 }
 
-.filter:hover>.text-box {
+#filter:hover>.text-box {
+    display: none;
+}
+.column:hover>.text-box{
+    display: none;
+}
+#hider:hover>.text-box{
     display: none;
 }
 
-.filter:hover>.filter{
+#filter:hover{
     opacity: 0;
 }
 
@@ -253,6 +268,8 @@ ul#pages li {
     padding-top: 16px;
     padding-bottom: 32px;
     padding-left: 32px;
+
+    z-index: 2;
 }
 
 
