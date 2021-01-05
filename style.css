@@ -1,4 +1,14 @@
+
+
 @charset 'utf-8';
+/* 
+Typefaces 
+
+Laksi 400
+Proxima 400
+Proxima 700
+*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Zilla+Slab&display=swap');
 
 * {
     margin: 0px
@@ -9,12 +19,10 @@ html{
 }
 
 body {
-
     min-height: 100%;
     background-color: #d2d6d6;
     position: relative;
 }
-
 
 a {
     text-decoration: none;
@@ -33,9 +41,8 @@ a {
 }
 
 #title {
-
     font-size: 48px;
-    font-family: laski-slab, sans-serif;
+    font-family: Zilla Slab, sans-serif;
     font-weight: 400;
     font-style: normal;
 
@@ -59,7 +66,7 @@ ul#links {
     padding: 0px;
 
     font-size: 16px;
-    font-family: ubuntu-mono, monospace;
+    font-family: Zilla Slab, monospace;
     font-weight: 400;
     font-style: normal;
 
@@ -95,7 +102,7 @@ ul#pages {
     padding: 0px;
 
     font-size: 24px;
-    font-family: ubuntu-mono, monospace;
+    font-family: Zilla Slab, monospace;
     font-weight: 400;
     font-style: normal;
 
@@ -140,7 +147,7 @@ ul#pages li {
     /* width property may couse problems */
 
     font-size: 16px;
-    font-family: proxima-nova, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 400;
     font-style: normal;
 }
@@ -156,7 +163,7 @@ ul#pages li {
 .tab-content ul li#heading {
     margin-top: 0.5em;
     font-size: 16px;
-    font-family: proxima-nova, monospace;
+    font-family: Montserrat, monospace;
     font-weight: 700;
     font-style: normal;
 }
@@ -206,48 +213,17 @@ ul#pages li {
     position: relative; 
 
     background-size: cover;
-
-    /* backdrop-filter: grayscale(100%); */
-    /* background-image: url(./Assets/Necro/2.gif); */
-
 }
 
+/* For freezeframe.js */
 .ff-canvas{
-    filter: grayscale(100%);
-}
-
-
-#filter{
-    position: inherit;
-    height: inherit;
-    width: inherit;
-    backdrop-filter: blur(5px) grayscale(100%);
-    
-}
-
-#filter:hover>.text-box {
-    display: none;
+    filter: invert(30%) grayscale(100%) ;
 }
 .column:hover>.text-box{
-    display: none;
-}
-#hider:hover>.text-box{
-    display: none;
-}
-
-#filter:hover{
     opacity: 0;
+    transition: opacity 300ms;
+    transition-delay: 100ms;
 }
-
-.column2 {
-    display: inline-block;
-    width: 512px;
-    height: 240px;
-
-    vertical-align: bottom;
-    position: relative;
-}
-
 
 .text-box {
     pointer-events: none;
@@ -257,7 +233,7 @@ ul#pages li {
     top: 32px;
 
     font-size: 16px;
-    font-family: ubuntu-mono, monospace;
+    font-family: Zilla Slab, monospace;
     font-weight: 400;
     font-style: normal;
     color: #ffffff;

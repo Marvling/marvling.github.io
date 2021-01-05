@@ -2,13 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-16" />
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/zyr7pea.css">
+    <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="libraries/p5.js""></script>
-    <script src=" libraries/p5.dom.js"> </script>
-    <script src="gifplayer.js"></script>
+    <script src="libraries/freezeframe.min.js"></script>
+</head>
 
 <body>
 
@@ -29,23 +28,27 @@
         </div>
         <div class="row">
             <a href="https://vimeo.com/409083451" class="column">
-                <img class="column" id="gif" src="Assets\Profwork\1-V1.png" alt="">
+                <img src="Assets\Work\settle-img2.gif" alt="">
                 <div class="text-box">Final Product</div>
             </a><a href="https://vimeo.com/409254866" class="column">
-                <img class="column" id="gif" src="Assets\Profwork\1-V2.png" alt="">
+                <img src="Assets\Work\settle-cover.gif" alt="">
                 <div class="text-box">Raw Footage</div>
             </a>
         </div>
         <div class="row">
             <a href="" class="column">
-                <img class="column" id="gif" src="Assets\Profwork\1-1.png" alt="">
+                <img src="Assets\Work\settle-img1.gif" alt="">
             </a><a href="" class="column">
-                <img class="column" id="gif" src="Assets\Profwork\1-2.png" alt="">
+                <img src="Assets\Work\settle-img3.gif" alt="">
             </a>
         </div>
     </div>
 
-    <div class="footer"></div>
+    <script>
+        new Freezeframe({
+            selector: '.column'
+        });
+    </script>
 </body>
 
 </html>
