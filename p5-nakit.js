@@ -1,3 +1,10 @@
+/* Adding the font to the html head
+works only if the sketch is called in the head tag */
+let linkFont = document.createElement('link');
+linkFont.setAttribute('rel', 'stylesheet');
+linkFont.setAttribute('href', 'https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+document.head.appendChild(linkFont);
+
 let bgColor;
 let defaultFillColor;
 
