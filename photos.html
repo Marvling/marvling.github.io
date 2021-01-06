@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-16" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.typekit.net/zyr7pea.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="libraries/p5.js""></script>
-    <script src=" libraries/p5.dom.js"> </script>
-    <script src="gifplayer.js"></script>
-
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <!-- Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="libraries/freezeframe.min.js"></script>
+    </head>
 
 <body>
 
@@ -29,7 +26,7 @@
     <div id="section-photography" class="tab-content">
         <div class="row-long">
             <a href="https://www.behance.net/gallery/20749665/Textures" class="column">
-                <img class="column" id="gif" src="Assets\Photos\1-1.png" alt="">
+                <img src="Assets\Photos\textures1-cover.gif" alt="">
                 <div class="text-box">
                     <ul>
                         <li>Textures-1</li>
@@ -39,7 +36,7 @@
                     </ul>
                 </div>
             </a><a href="https://www.behance.net/gallery/23273127/Textures-2" class="column">
-                <img class="column" id="gif" src="Assets\Photos\2-1.png" alt="">
+                <img src="Assets\Photos\textures2-cover.gif" alt="">
                 <div class="text-box">
                     <ul>
                         <li>Textures-2</li>
@@ -48,8 +45,8 @@
                         <li id="space">2015</li>
                     </ul>
                 </div>
-            </a><a href="photos-ibadethaneler.html" class="column">
-                <img class="column" id="gif" src="Assets\Photos\3-1.png" alt="">
+            </a><a href="photos-ibadet.html" class="column">
+                <img src="Assets\Photos\ibadet-cover.gif" alt="">
                 <div class="text-box">
                     <ul>
                         <li>İbadethaneler</li>
@@ -61,8 +58,8 @@
             </a>
         </div>
         <div class="row-long">
-            <a href="https://adobe.ly/2xNW2Wb" class="column">
-                <img class="column" id="gif" src="Assets\Photos\4-1.png" alt="">
+            <a href="photos-textures3.html" class="column">
+                <img src="Assets\Photos\textures3-cover.gif" alt="">
                 <div class="text-box">
                     <ul>
                         <li>Textures-3</li>
@@ -76,7 +73,11 @@
     </div>
 
 
-    <div class="footer"></div>
+    <script>
+        new Freezeframe({
+            selector: '.column'
+        });
+    </script>
 </body>
 
 </html>
