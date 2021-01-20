@@ -213,6 +213,8 @@ ul#pages li {
     position: relative; 
 
     background-size: cover;
+
+    object-fit: cover;
 }
 
 /* For freezeframe.js */
