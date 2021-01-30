@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <!-- Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./libraries/freezeframe.min.js"></script>
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <!-- Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="libraries/freezeframe.min.js"></script>
+    </head>
+
 
 <body>
 
@@ -22,64 +23,37 @@
     </script>
     <!-- Navbar -->
 
-    <!-- landing page -->
+    <!-- content -->
 
-    <div class="tab-content">
-        <div class="row-long">
-            <a href="index.html" class="column" style="background-image: url(./Assets/Necro/2.gif)">
-                <div class="text-box">
-                    <ul>
-                        <li>Nakit</li>
-                        <li>‎ ‎</li>
-                        <li id="space">p5.js</li>
-                        <li>‎ ‎</li>
-                        <li id="space">2020</li>
-                    </ul>
-                </div>
-            </a><a href="p5-mandalina.html" class="column" style="background-image: url(./Assets/Necro/2.gif)">
-
-                <div class="text-box">
-                    <ul>
-                        <li>Mandalina</li>
-                        <li>‎ ‎</li>
-                        <li id="space">p5.js</li>
-                        <li>‎ ‎</li>
-                        <li id="space">2020</li>
-                    </ul>
-                </div>
-
-            </a><a href="p5-follower.html" class="column" style="background-image: url(./Assets/Necro/2.gif)">
-                <div id="filter">
-                    <div class="text-box">
-                        <ul>
-                            <li>Followers</li>
-                            <li>‎ ‎</li>
-                            <li id="space">p5.js</li>
-                            <li>‎ ‎</li>
-                            <li id="space">2020</li>
-                        </ul>
-                    </div>
-                </div>
-            </a>
-        </div>
+    <div id="list" class="tab-content">
         <div class="row-long">
             <a href="index.html" class="column">
-                <img class="freezeframe ff-image" src="Assets/MouseHaunt/2.gif">
+                <img src="Assets\Code\nakit-cover.png" alt="">
                 <div class="text-box">
                     <ul>
-                        <li>Nakit</li>
+                        <li>Best</li>
                         <li>‎ ‎</li>
                         <li id="space">p5.js</li>
                         <li>‎ ‎</li>
                         <li id="space">2020</li>
                     </ul>
                 </div>
-
-            </a><a class="column" href="index.html">
-                <img class="freezeframe ff-image" src="Assets/MouseHaunt/1.gif">
+            </a><a href="p5-mandalina.html" id="hide" class="column">
+                <img src="Assets\Code\mandalina-cover.png" alt="">
                 <div class="text-box">
                     <ul>
-                        <li>Nakit</li>
+                        <li>11/20</li>
+                        <li>‎ ‎</li>
+                        <li id="space">p5.js</li>
+                        <li>‎ ‎</li>
+                        <li id="space">2020</li>
+                    </ul>
+                </div>
+            </a><a href="p5-followers.html" id="hide" class="column">
+                <img src="Assets\Code\followers-cover.png" alt="">
+                <div class="text-box">
+                    <ul>
+                        <li>12/20</li>
                         <li>‎ ‎</li>
                         <li id="space">p5.js</li>
                         <li>‎ ‎</li>
@@ -89,11 +63,26 @@
             </a>
         </div>
 
-        <script>
-            new Freezeframe({
-                selector: '.column'
-            });
-        </script>
+        <div class="row-long">
+            <a href="https://github.com/Marvling/Chip-x8" id="hide" class="column">
+                <img src="Assets\Code\followers-cover.png" alt="">
+                <div class="text-box">
+                    <ul>
+                        <li>01/21</li>
+                        <li>‎ ‎</li>
+                        <li id="space">three.js</li>
+                        <li>‎ ‎</li>
+                        <li id="space">2020</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script>
+        new Freezeframe({
+            selector: '.column'
+        });
+    </script>
     </div>
 </body>
 
