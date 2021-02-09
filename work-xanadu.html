@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <!-- Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="libraries/freezeframe.min.js"></script>
+        <script src="libraries/Three.js"></script>
+    </head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="nav">
+    </div>
+
+    <script>
+        $(function () {
+            $(".nav").load("navbar.html");
+        });
+    </script>
+    <!-- Navbar -->
+
+    <!-- MouseHaunt -->
+    <div id="section-mousehaunt" class="tab-content">
+        <div class="row">
+            <p>Demo for showcasing the quantum computing chip from xanadu ai. Unfotunately the project was
+                halted and the demo never got finalized.
+            </p>
+        </div>
+
+        <div class="row" id="threejs-wrapper">
+            <canvas id="threejs-main"></canvas>
+            <div style="position:absolute"></div>
+        </div>
+        <script type="module" src="work-xanadu.js"></script>
+
+        
+
+    </div>
+
+    <script>
+        new Freezeframe({
+            selector: '.column'
+        });
+    </script>
+</body>
+
+</html>
