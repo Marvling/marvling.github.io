@@ -1,15 +1,15 @@
-// import * as THREE from './libraies/Three.js';
-import { GUI } from './libraries/modules/dat.gui.module.js';
+import * as THREE from '/libraries/modules/three.module.js';
+import { GUI } from '/libraries/modules/dat.gui.module.js';
 
 
 //INIT
-const canvas = document.querySelector('#main');
+const canvas = document.querySelector('#threejs-main');
 
 const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setClearColor("#000000");
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0d0d0d);
+scene.background = new THREE.Color(0xd2d6d6);
 
 
 // Object Rotation variables
@@ -26,22 +26,26 @@ let windowHalfY = window.innerHeight / 2;
 //CAMERA
 const fov = 75;
 const aspect = window.innerWidth / window.innerHeight;
+
 const near = 0.1;
 const far = 100;
 
 const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
 camera.position.z = 5;
 
+//Used to format the display in case of full-screen usage
+//In this case this is function is mostly overwritten by the div size set on css
 function resizeRendererToDisplaySize(renderer) {
     const canvas = renderer.domElement;
     const pixelRatio = window.devicePixelRatio;
     const width = canvas.clientWidth * pixelRatio | 0;
     const height = canvas.clientHeight * pixelRatio | 0;
     const needResize =
-        canvas.width !== document.getElementById('main').offsetWidth ||
-        canvas.height !== document.getElementById('main').offsetHeight;
+        canvas.width !== document.getElementById('threejs-main').offsetWidth ||
+        canvas.height !== document.getElementById('threejs-main').offsetHeight;
     if (needResize) {
-        renderer.setSize(width, height, false);
+        //adding 300 to height to 
+        renderer.setSize(width , height, false);
 
         windowHalfX = window.innerWidth / 2;
         windowHalfY = window.innerHeight / 2;
@@ -67,20 +71,13 @@ scene.add(lightDirectional.target);
 
 //SCENE
 const loaderTex = new THREE.TextureLoader();
-// const loaderGLTF = new GLTFLoader();
-
-// loaderGLTF.load('./models/test.gltf', function (gltf) {
-
-//     scene.add(gltf.scene);
-
-// });
 
 const geoChip = new THREE.BoxGeometry(1.99, 0.1, 4.97);
 
 
 const matChipBump = new THREE.MeshStandardMaterial({
     color: 0x4a4a4a,
-    bumpMap: loaderTex.load('./Assets/Chip_v3.png'),
+    bumpMap: loaderTex.load('./Assets/Work/xanadu-map.png'),
     roughness: 0.8,
     metalness: 0.2,
 });
@@ -111,7 +108,7 @@ helperAxes.renderOrder = 1;
 meshChip.add(helperAxes);
 
 const helperGrid = new THREE.GridHelper(20, 10);
-scene.add(helperGrid);
+// scene.add(helperGrid);
 
 const helperLight = new THREE.DirectionalLightHelper(lightDirectional);
 lightDirectional.add(helperLight);
@@ -131,7 +128,8 @@ class ColorGUIHelper {
         this.object[this.prop].set(hexString);
     }
 }
-function makeXYZGUI(gui, vector3, name, onChangeFn) { //Showing the direction of the light
+function makeXYZGUI(gui, vector3, name, onChangeFn) { 
+    //Showing the direction of the light
     const folder = gui.addFolder(name);
     folder.add(vector3, 'x', -10, 10).onChange(onChangeFn);
     folder.add(vector3, 'y', 0, 10).onChange(onChangeFn);
@@ -146,7 +144,9 @@ function updateLight() {
 updateLight();
 
 
-const gui = new GUI();
+const gui = new GUI({autoPlace:false});
+// Disabling autoPlace and moving the GUI into a custom div
+var customContainer = $('#threejs-gui').append($(gui.domElement));
 gui.addColor(new ColorGUIHelper(matChip, 'color'), 'value').name('Chip Color Back');
 gui.addColor(new ColorGUIHelper(matChipBump, 'color'), 'value').name('Chip Color Front');
 
