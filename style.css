@@ -208,17 +208,31 @@ ul#pages li {
     object-fit: cover;
 }
 
-/* For freezeframe.js */
-.ff-canvas{
-    filter: invert(30%) grayscale(100%) ;
-}
 .column:hover>.text-box{
     opacity: 0;
     transition: opacity 300ms;
     transition-delay: 100ms;
 }
 
+/* For freezeframe.js */
+.ff-canvas{
+    filter: invert(30%) grayscale(100%) ;
+}
+
+/* For fresco.js */
+#test{
+    position: relative;
+    display: inline-block;
+}
+#test:hover>.text-box{
+    opacity: 0;
+    transition: opacity 300ms;
+    transition-delay: 100ms;
+}
+
+
 .text-box {
+    display: inline-block;
     pointer-events: none;
 
     position: absolute;

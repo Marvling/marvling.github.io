@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <!-- Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- Fresco -->
+        <script src="/libraries/fresco/fresco.min.js"></script>
+        <link rel="stylesheet" href="/libraries/fresco/fresco.css"">
+        <!-- Freezeframe -->
+        <script src="libraries/freezeframe.min.js"></script>
+    </head>
+
+
+<body>
+
+    <!-- Navbar -->
+    <div class="nav">
+    </div>
+
+    <script>
+        $(function () {
+            $(".nav").load("navbar.html");
+        });
+    </script>
+    <!-- Navbar -->
+
+    <!-- content -->
+
+    <div id="list" class="tab-content">
+        <div class="row-long">
+            <p class="column">
+                Experimenting with different moods, combining my favourite music with my favourite movies
+                <br>
+                <br>
+                Using Final Cut Pro for editing
+                <br>
+                <br>
+            </p><a  class="fresco column"  href="https://www.youtube.com/watch?v=Ub0AvmY80JI" data-fresco-group="20_10">
+                <img src="Assets\Work\videos-1.png" alt="">
+                <div class="text-box"> 
+                    <ul>
+                        <li>Noah's Ark Angel</li>
+                    </ul>
+                </div>
+            </a><a class="fresco column"  href="https://www.youtube.com/watch?v=sSsRlnVOKIs" data-fresco-group="20_10">
+                <img  src="Assets\Work\videos-2.png" alt="">
+                <div class="text-box">
+                    <ul>
+                        <li>Immortal Elephant</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+    </div>
+    <script>
+        new Freezeframe({
+            selector: '.column'
+        });
+    </script>
+</body>
+
+</html>
