@@ -147,6 +147,7 @@ ul#pages li {
     padding: 0px;
     line-height: 16px;
     margin-right: 0;
+    top: -12px;
 }
 
 .tab-content ul li#heading {
