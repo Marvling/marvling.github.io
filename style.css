@@ -134,9 +134,7 @@ ul#pages li {
 
     margin-left: 320px;
     padding-top: 128px;
-    /* width: 100%; */
-    /* width property may couse problems */
-
+    
     font-size: 16px;
     font-family: Montserrat, sans-serif;
     font-weight: 400;
@@ -149,6 +147,7 @@ ul#pages li {
     padding: 0px;
     line-height: 16px;
     margin-right: 0;
+    top: -12px;
 }
 
 .tab-content ul li#heading {
@@ -270,17 +269,14 @@ ul#pages li {
     margin-top: 16px;
 }
 
-#threejs-wrapper {
-    position: block;
-}
-
-#threejs-overlay {
-    position: absolute;
+#threejs-gui{
+    position: relative;
+    float: right;
 }
 
 #threejs-main {
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    height: 80%;
     display: block;
-    position: absolute;
+    position: fixed;
 }

@@ -7,6 +7,9 @@
     <!-- Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="libraries/freezeframe.min.js"></script>
+    <!-- fresco -->
+    <script src="/libraries/fresco/fresco.min.js"></script>
+    <link rel="stylesheet" href="/libraries/fresco/fresco.css"">
 </head>
 
 <body>
@@ -32,12 +35,14 @@
         </div>
 
         <div class="row">
-            <a href="https://vimeo.com/460328558" id="frezzeframe" class="column">
+            <a href="https://vimeo.com/460328558" id="frezzeframe" class="column fresco fres">
                 <img class="column" src="Assets\Work\necro-img1.gif" alt="">
                 <div class="text-box">Animatic</div>
             </a><ul class="column">
                 <li id="heading">Production Manager</li>
                 <li>Sinan Özer</li>
+                <li id="heading">Production Art</li>
+                <li><a href="http://leventtasel.com/">Ahmet Levent Taşel</a></li>
                 <li id="heading">Story</li>
                 <li><a href="https://www.instagram.com/ozgarip/">Oğuz Garip</a></li>
                 <li id="heading">Voice Actor</li>
@@ -50,15 +55,30 @@
             </ul>
         </div>
 
-        <div class="row">
-            <!-- TODO: add sketches and look-devs -->
+        <div class="row-long">
+            <a href="Assets/Work/necro-img2.jpg" class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img2.jpg" class="column" alt="">
+            </a><a href="Assets/Work/necro-img3.png"class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img3.png"class="column" alt="">
+            </a><a href="Assets/Work/necro-img4.png"class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img4.png"class="column" alt="">
+            </a>
+        </div>
+        <div class="row-long">
+            <a href="Assets/Work/necro-img5.png" class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img5.png" class="column" alt="">
+            </a><a href="Assets/Work/necro-img6.jpg"class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img6.jpg"class="column" alt="">
+            </a><a href="Assets/Work/necro-img7.jpg"class="fresco" data-fresco-group="Lookdev">
+                <img src="Assets/Work/necro-img7.jpg"class="column" alt="">
+            </a>
         </div>
 
     </div>
 
     <script>
         new Freezeframe({
-            selector: '.column'
+            selector: '.fres'
         });
     </script>
 </body>
