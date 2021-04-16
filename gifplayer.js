@@ -21,5 +21,3 @@ $(document).ready(function () {
 
 
 });
-
-//this is git test
