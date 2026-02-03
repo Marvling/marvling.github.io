@@ -80,7 +80,7 @@ function draw() {
     push();
     noStroke();
     fill(255);
-    text('click and drag', -50, height / -2 + 50);
+    //text('click and drag', -50, height / -2 + 50);
     pop();
 
     stroke(strokeColor);

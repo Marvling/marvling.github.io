@@ -114,6 +114,8 @@ function drawFillDiamondTime(centerX, centerY, fullHeight, duration, maxMilli, f
     pop();
 }
 
+//Terrible code, so much repetition
+
 function drawClock(centerX, centerY, fullHeight, duration, maxMilli, digit, fillColor) {
 
     for (let i = 0; i < 4; i++) {
