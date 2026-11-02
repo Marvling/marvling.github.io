@@ -1,0 +1,18 @@
+---
+// Photo series: every image in src/assets/photos/<slug>/ -> /photos-<slug>.html
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+import { imagesIn } from '../lib';
+
+export async function getStaticPaths() {
+  const series = await getCollection('photos', (p) => !p.data.href);
+  return series.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'photos'> };
+---
+
+<Base title={entry.data.title}>
+  <Gallery items={imagesIn(`photos/${entry.id}`)} alt={entry.data.title} />
+</Base>

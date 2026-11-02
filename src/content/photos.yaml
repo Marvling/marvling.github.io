@@ -1,0 +1,27 @@
+# Photography grid. No href -> photos-<id>.html showing every image in src/assets/photos/<id>/.
+- id: stock
+  title: Adobe Stock
+  cover: ../assets/photos/stock.png
+  href: https://stock.adobe.com/contributor/209993616/Sinan
+- id: textures1
+  title: Textures-1
+  year: 2014
+  video: textures1-cover
+  href: https://www.behance.net/gallery/20749665/Textures
+- id: textures2
+  title: Textures-2
+  year: 2015
+  video: textures2-cover
+  href: https://www.behance.net/gallery/23273127/Textures-2
+- id: textures3
+  title: Textures-3
+  year: 2018
+  video: textures3-cover
+- id: birds
+  title: Birds
+  year: 2020
+  cover: ../assets/photos/birds/birds-4.jpg
+- id: ibadet
+  title: İbadethaneler
+  year: 2019
+  video: ibadet-cover

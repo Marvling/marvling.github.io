@@ -1,0 +1,30 @@
+---
+// Grid of every card in a YAML collection (src/content/<collection>.yaml), in file order.
+// Slot content becomes the first grid cell (intro text).
+import { getCollection } from 'astro:content';
+import Card from './Card.astro';
+import Lightbox from './Lightbox.astro';
+import { captionOf, hrefFor } from '../lib';
+
+interface Props {
+  collection: 'work' | 'games' | 'code' | 'videos' | 'photos' | 'dailies';
+}
+const { collection } = Astro.props;
+const cards = (await getCollection(collection)).sort((a, b) => a.data.order - b.data.order);
+const hasEmbeds = cards.some((c) => c.data.embed);
+---
+
+<div class="grid" data-gallery={hasEmbeds ? '' : undefined}>
+  <slot />
+  {cards.map((card, i) => (
+    <Card
+      href={hrefFor(collection, card)}
+      cover={card.data.cover}
+      video={card.data.video}
+      caption={captionOf(card)}
+      embed={card.data.embed}
+      eager={i < 3}
+    />
+  ))}
+</div>
+{hasEmbeds && <Lightbox />}

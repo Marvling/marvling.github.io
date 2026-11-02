@@ -1,0 +1,28 @@
+# Code grid, in display order. No href -> links to p5-<id>.html running src/sketches/<id>.ts.
+- id: nakit
+  title: Nakit
+  tags: [p5.js]
+  year: 2020
+  cover: ../assets/code/nakit.png
+- id: mandalina
+  title: Mandalina
+  tags: [p5.js]
+  year: 2020
+  cover: ../assets/code/mandalina.png
+- id: followers
+  title: Followers
+  tags: [p5.js]
+  year: 2020
+  cover: ../assets/code/followers.png
+- id: model-viewer
+  title: Model Viewer
+  tags: [three.js]
+  year: 2021
+  cover: ../assets/code/model.png
+  href: /work-xanadu.html
+- id: image-syncer
+  title: Image Syncer
+  tags: [Python]
+  year: 2021
+  cover: ../assets/code/python.png
+  href: https://github.com/Marvling/python-html-image-uploader

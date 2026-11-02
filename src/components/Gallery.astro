@@ -1,0 +1,39 @@
+---
+// Image grid that opens in a lightbox. Items with a `video` URL open that video instead.
+import { getImage, Picture } from 'astro:assets';
+import Lightbox from './Lightbox.astro';
+import { embedSrc, type NamedImage } from '../lib';
+
+interface Props {
+  items: (NamedImage & { video?: string })[];
+  alt: string;
+}
+const { items, alt } = Astro.props;
+const full = await Promise.all(
+  items.map(({ image }) =>
+    getImage({ src: image, width: Math.min(image.width, 2560), format: 'webp' }),
+  ),
+);
+---
+
+<div class="grid" data-gallery>
+  {items.map(({ image, video }, i) => (
+    <a
+      class="card pswp-item"
+      href={video ?? full[i]!.src}
+      data-embed={video && embedSrc(video)}
+      data-pswp-width={full[i]!.attributes.width}
+      data-pswp-height={full[i]!.attributes.height}
+    >
+      <Picture
+        src={image}
+        alt={`${alt}, ${video ? 'video' : 'image'} ${i + 1}`}
+        formats={['avif', 'webp']}
+        widths={[240, 480, 720]}
+        sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 240px"
+        loading={i < 3 ? 'eager' : 'lazy'}
+      />
+    </a>
+  ))}
+</div>
+<Lightbox />

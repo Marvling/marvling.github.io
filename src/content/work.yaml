@@ -1,0 +1,74 @@
+# Work grid, in display order. Caption = title/subtitle, tags, year.
+# No href -> links to work-<id>.html (src/content/projects/<id>.md).
+- id: xanadu
+  title: Xanadu Quantum Computing
+  tags: [three.js, Interactive Model]
+  year: 2020
+  cover: ../assets/work/xanadu-model.png
+- id: xanadu-motion
+  title: Xanadu Quantum Computing
+  tags: [Motion Design, 3D Animation]
+  year: 2020
+  video: xanadu-cover
+  href: https://www.behance.net/gallery/104711009/Quantum-Computing
+- id: burrard
+  title: Burrard Pharma
+  tags: [Motion Design, 3D Animation]
+  year: 2020
+  video: burradPharma-cover
+  href: https://www.behance.net/gallery/104710009/Burrard-Pharma-website-3D-Components
+- id: necro
+  title: Necromancer Leagal
+  tags: [Short Animation]
+  year: 2020
+  video: necro-cover
+- id: mousehaunt
+  title: Mouse Haunt
+  subtitle: Top-Down Shooter
+  tags: [Unreal Engine 4]
+  year: 2017
+  video: mouse-cover
+- id: trail
+  title: World Expo 2016
+  subtitle: On The Trail of Water
+  tags: [Infogrphic]
+  year: 2016
+  video: trail-cover
+  href: https://www.behance.net/gallery/47823281/On-the-Trail-of-Water
+- id: settle
+  title: World Expo 2016
+  subtitle: First Settlements
+  tags: [Projection Mapping, Motion Design]
+  year: 2016
+  video: settle-cover
+- id: whichis
+  title: Whichisforme
+  subtitle: Mobile App
+  tags: [UX Design, Visual identity]
+  year: 2015
+  video: whichis-cover
+  href: https://www.behance.net/gallery/47829313/whichis4me-Mobile-Application
+- id: kinetic
+  title: Kinetic Typography
+  tags: [Poster Design]
+  year: 2015
+  video: typographyPoster-cover
+  href: https://www.behance.net/gallery/17165027/Kinetic-Typography-Poster
+- id: reading-list
+  title: Reading List
+  tags: [Infogrphic]
+  year: 2014
+  video: readingList-cover
+  href: https://www.behance.net/gallery/17164945/Reading-List
+- id: 3days
+  title: 3 Days In Ankara
+  tags: [Poster Design]
+  year: 2014
+  video: 3Days-cover
+  href: https://www.behance.net/gallery/20751883/Poster-for-a-Workshop
+- id: subway
+  title: Subway Sound Visuals
+  tags: [Poster Design, Photography]
+  year: 2013
+  video: subway-cover
+  href: https://www.behance.net/gallery/15005753/Subway-Sound-Visualisation
