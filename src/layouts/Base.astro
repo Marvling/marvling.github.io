@@ -1,0 +1,54 @@
+---
+// Page shell: <head> metadata, sidebar, and <main>. `full` removes content padding (sketch pages).
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import { site } from '../site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  full?: boolean;
+}
+const { title, description = site.description, full = false } = Astro.props;
+const pageTitle = title ? `${title} · ${site.title}` : site.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.title,
+  url: Astro.site,
+  sameAs: site.links
+    .flat()
+    .filter((l) => l.href.startsWith('http'))
+    .map((l) => l.href),
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#6a6db0" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+  </head>
+  <body>
+    <a class="skip-link visually-hidden" href="#main">
+      Skip to content
+    </a>
+    <Header />
+    <main id="main" class:list={{ full }}>
+      <h1 class="visually-hidden">{title ?? site.title}</h1>
+      <slot />
+    </main>
+  </body>
+</html>

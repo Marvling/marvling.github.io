@@ -1,0 +1,36 @@
+---
+import { site } from '../site';
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="site-title" href="/">
+    {site.title}
+  </a>
+  <div class="site-links">
+    {site.links.map((line) => (
+      <div>
+        {line.map((link, i) => (
+          <>
+            {i > 0 && ' • '}
+            <a href={link.href} rel={link.href.startsWith('http') ? 'me' : undefined}>
+              {link.label}
+            </a>
+          </>
+        ))}
+      </div>
+    ))}
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+  </div>
+  <nav class="site-nav" aria-label="Sections">
+    <ul>
+      {site.nav.map(({ label, href }) => (
+        <li>
+          <a href={href} aria-current={path === href ? 'page' : undefined}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

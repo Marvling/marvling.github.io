@@ -1,0 +1,33 @@
+# Games grid, in display order.
+- id: mousehaunt
+  title: Mouse Haunt
+  subtitle: Top-Down Shooter
+  tags: [PC]
+  year: 2017
+  video: mouse-cover
+  href: /work-mousehaunt.html
+- id: diamond-rush
+  title: Diamond Rush
+  tags: [Board Game]
+  year: 2017
+  cover: ../assets/games/diamondrush.png
+  href: /Assets/Games/DiamondRush.pdf
+- id: the-surge
+  title: The Surge
+  tags: [Article]
+  year: 2019
+  cover: ../assets/games/thesurge.jpg
+  href: https://docs.google.com/document/d/1eL-yyf3nEw_lrkVLJ-XCP82jqEN5CAk1KRQgWFxBPaM/edit?usp=sharing
+- id: shipbreaker
+  title: 'Hardspace: Shipbreaker'
+  tags: [Article]
+  year: 2021
+  cover: ../assets/games/shipbreaker.png
+  href: https://docs.google.com/document/d/1gybhSxkCS_3JCKXErlRXptTdlAB_23cTUz_ypv3-Lu8/edit?usp=sharing
+- id: arkanoid
+  title: Untitled Arkanoid
+  subtitle: Work In Progress
+  tags: [PICO-8]
+  year: 2021
+  cover: ../assets/games/arkanoid.png
+  href: https://github.com/Marvling/sandbox-pico8/tree/main/carts

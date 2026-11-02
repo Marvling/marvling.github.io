@@ -1,0 +1,53 @@
+# Daily render series. Each links to dailies-<id>.html showing every image in
+# src/assets/dailies/<id>/ (newest first). `videos` turns an image into a Vimeo link.
+- id: bestof
+  title: Best
+  cover: ../assets/dailies/covers/bestof.jpg
+  picks:
+    [
+      20-10/20-10-20,
+      20-10/20-10-23,
+      20-10/20-10-26,
+      20-10/20-10-28,
+      20-10/20-10-29,
+      20-10/20-10-30,
+      20-10/20-10-31,
+      20-11/20-11-01,
+      20-11/20-11-02,
+      20-11/20-11-05,
+      20-11/20-11-07,
+      20-11/20-11-09,
+      20-11/20-11-10v02,
+      20-11/20-11-14,
+      20-11/20-11-18,
+    ]
+- id: 21-01
+  title: 01/21
+  cover: ../assets/dailies/covers/21-01.jpg
+  videos:
+    21-01-02: https://vimeo.com/508648483
+    21-01-03: https://vimeo.com/508648571
+    21-01-05: https://vimeo.com/508648644
+    21-01-09: https://vimeo.com/508648803
+- id: 20-12
+  title: 12/20
+  cover: ../assets/dailies/covers/20-12.jpg
+  videos:
+    20-12-26: https://vimeo.com/508648216
+    20-12-29: https://vimeo.com/508648403
+- id: 20-11
+  title: 11/20
+  cover: ../assets/dailies/covers/20-11.jpg
+  videos:
+    20-11-11: https://vimeo.com/508647204
+    20-11-13: https://vimeo.com/508647422
+    20-11-15: https://vimeo.com/508647537
+    20-11-21: https://vimeo.com/508647632
+    20-11-22: https://vimeo.com/508647731
+    20-11-24: https://vimeo.com/508647837
+    20-11-25: https://vimeo.com/508647966
+    20-11-26: https://vimeo.com/508648016
+    20-11-27: https://vimeo.com/508648080
+- id: 20-10
+  title: 10/20
+  cover: ../assets/dailies/covers/20-10.jpg

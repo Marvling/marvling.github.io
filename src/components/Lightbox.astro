@@ -1,0 +1,43 @@
+---
+// PhotoSwipe for every [data-gallery] on the page; children with data-embed open an iframe.
+---
+
+<script>
+  import 'photoswipe/style.css';
+  import PhotoSwipeLightbox from 'photoswipe/lightbox';
+
+  for (const gallery of document.querySelectorAll<HTMLElement>('[data-gallery]')) {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery,
+      children: '.pswp-item',
+      pswpModule: () => import('photoswipe'),
+    });
+    lightbox.addFilter('itemData', (item) => {
+      const src = item.element?.dataset.embed;
+      return src ? { html: `<div class="pswp-embed" data-src="${src}"></div>` } : item;
+    });
+    // neighbours are preloaded, so only the visible slide gets a (playing) iframe
+    const embedIn = (el?: HTMLElement) => el?.querySelector<HTMLElement>('.pswp-embed');
+    lightbox.on('contentActivate', ({ content }) => {
+      const box = embedIn(content.element);
+      if (box) {
+        box.innerHTML = `<iframe src="${box.dataset.src}" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      }
+    });
+    lightbox.on('contentDeactivate', ({ content }) => embedIn(content.element)?.replaceChildren());
+    lightbox.init();
+  }
+</script>
+
+<style is:global>
+  .pswp-embed {
+    display: grid;
+    place-items: center;
+    height: 100%;
+  }
+  .pswp-embed iframe {
+    width: min(90vw, 160vh);
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+</style>

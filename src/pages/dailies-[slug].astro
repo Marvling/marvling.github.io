@@ -1,0 +1,23 @@
+---
+// Daily render series: images in src/assets/dailies/<slug>/ (or `picks`), newest first.
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+import { imageAt, imagesIn } from '../lib';
+
+export async function getStaticPaths() {
+  const series = await getCollection('dailies', (d) => !d.data.href);
+  return series.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'dailies'> };
+const { title, picks, videos } = entry.data;
+const images = picks
+  ? picks.map((ref) => imageAt(`dailies/${ref}`))
+  : imagesIn(`dailies/${entry.id}`).reverse();
+const items = images.map((img) => ({ ...img, video: videos[img.name] }));
+---
+
+<Base title={`Daily Renders ${title}`}>
+  <Gallery items={items} alt={`Daily render ${title}`} />
+</Base>

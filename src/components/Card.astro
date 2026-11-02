@@ -1,0 +1,60 @@
+---
+// Square card: cover image or looping video, optional caption that fades on hover.
+// `embed` opens a YouTube/Vimeo href in the lightbox (needs a [data-gallery] parent + <Lightbox />).
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import AnimatedThumb from './AnimatedThumb.astro';
+import { embedSrc } from '../lib';
+
+interface Props {
+  href?: string;
+  cover?: ImageMetadata;
+  video?: string;
+  caption?: string[][];
+  embed?: boolean;
+  muted?: boolean;
+  eager?: boolean;
+}
+const {
+  href,
+  cover,
+  video,
+  caption = [],
+  embed = false,
+  muted = true,
+  eager = false,
+} = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  class:list={['card', { muted, 'pswp-item': embed }]}
+  href={href}
+  data-embed={embed && href ? embedSrc(href) : undefined}
+>
+  {cover && (
+    <Picture
+      src={cover}
+      alt=""
+      formats={['avif', 'webp']}
+      widths={[240, 480, 720]}
+      sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 240px"
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  )}
+  {video && <AnimatedThumb name={video} />}
+  {caption.length > 0 && (
+    <ul class="caption">
+      {caption.map((group) => (
+        <li>
+          {group.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))}
+        </li>
+      ))}
+    </ul>
+  )}
+</Tag>

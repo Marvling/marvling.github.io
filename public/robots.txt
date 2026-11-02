@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marvling.github.io/sitemap-index.xml

@@ -1,0 +1,57 @@
+---
+// Project pages: src/content/projects/<slug>.md -> /work-<slug>.html
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import Gallery from '../components/Gallery.astro';
+import Lightbox from '../components/Lightbox.astro';
+import Sketch from '../components/Sketch.astro';
+import { imagesIn } from '../lib';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const { title, media, credits, gallery, sketch } = project.data;
+const { Content } = await render(project);
+const hasEmbeds = media.some((m) => m.embed);
+---
+
+<Base title={title}>
+  <div class="intro">
+    <Content />
+  </div>
+  {media.length > 0 && (
+    <div class="grid two" data-gallery={hasEmbeds ? '' : undefined}>
+      {media.map((m, i) => (
+        <>
+          <Card
+            href={m.href}
+            cover={m.cover}
+            video={m.video}
+            caption={m.label ? [[m.label]] : []}
+            embed={m.embed}
+            eager
+          />
+          {i === 0 && credits.length > 0 && (
+            <dl class="credits">
+              {credits.map(({ heading, items }) => (
+                <>
+                  <dt>{heading}</dt>
+                  {items.map((item) => (
+                    <dd>{typeof item === 'string' ? item : <a href={item.href}>{item.text}</a>}</dd>
+                  ))}
+                </>
+              ))}
+            </dl>
+          )}
+        </>
+      ))}
+    </div>
+  )}
+  {hasEmbeds && <Lightbox />}
+  {gallery && <Gallery items={imagesIn(gallery)} alt={title} />}
+  {sketch && <Sketch name={sketch} class="model" />}
+</Base>

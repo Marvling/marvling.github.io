@@ -1,0 +1,17 @@
+---
+// p5 sketches: code cards without an href -> /p5-<slug>.html running src/sketches/<slug>.ts
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Sketch from '../components/Sketch.astro';
+
+export async function getStaticPaths() {
+  const sketches = await getCollection('code', (c) => !c.data.href);
+  return sketches.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'code'> };
+---
+
+<Base title={entry.data.title} full>
+  <Sketch name={entry.id} />
+</Base>

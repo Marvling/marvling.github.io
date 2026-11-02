@@ -1,0 +1,32 @@
+---
+// Looping clip from public/media/<name>.mp4; shows the poster until the card is hovered or focused.
+interface Props {
+  name: string;
+}
+const { name } = Astro.props;
+---
+
+<video
+  class="thumb"
+  src={`/media/${name}.mp4`}
+  poster={`/media/${name}.jpg`}
+  muted
+  loop
+  playsinline
+  preload="none"
+  aria-hidden="true"
+></video>
+
+<script>
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (const video of document.querySelectorAll<HTMLVideoElement>('video.thumb')) {
+      const target = video.closest('.card') ?? video;
+      const play = () => void video.play().catch(() => {});
+      const stop = () => video.pause();
+      target.addEventListener('pointerenter', play);
+      target.addEventListener('focusin', play);
+      target.addEventListener('pointerleave', stop);
+      target.addEventListener('focusout', stop);
+    }
+  }
+</script>

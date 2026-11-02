@@ -1,0 +1,358 @@
+@import '@fontsource/zilla-slab/latin-ext-400.css';
+@import '@fontsource/zilla-slab/latin-400.css';
+@import '@fontsource/montserrat/latin-ext-400.css';
+@import '@fontsource/montserrat/latin-400.css';
+@import '@fontsource/montserrat/latin-ext-700.css';
+@import '@fontsource/montserrat/latin-700.css';
+
+:root {
+  --bg: #d2d6d6;
+  --sidebar: #6a6db0; /* #7b7ebc darkened to pass WCAG AA with white text */
+  --caption: #7bbc97;
+  --text: #000;
+  --on-color: #fff;
+  --serif: 'Zilla Slab', serif;
+  --sans: Montserrat, sans-serif;
+  --sidebar-w: 272px;
+  --card: 240px;
+  --gap-x: 32px;
+  --gap-y: 24px;
+  --content-top: 128px;
+  --content-left: 48px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px var(--sans);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+img,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid #1f2933;
+  outline-offset: 2px;
+}
+
+.visually-hidden:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 10;
+  padding: 8px;
+  background: var(--on-color);
+}
+
+/* Sidebar */
+.site-header {
+  padding: 24px 8px 24px 24px;
+  background: var(--sidebar);
+  color: var(--on-color);
+  font-family: var(--serif);
+}
+
+.site-title {
+  display: block;
+  height: 48px;
+  font-size: 48px;
+}
+
+.site-links {
+  margin-top: 16px;
+  line-height: 24px; /* 24px tap targets */
+}
+
+.site-nav ul {
+  margin-top: 16px;
+  font-size: 24px;
+}
+
+.site-nav li {
+  margin-top: 0.5em;
+}
+
+/* Content */
+main {
+  padding: var(--content-top) var(--content-left) 48px;
+  min-width: 0;
+}
+
+main.full {
+  padding: 0;
+}
+
+.intro {
+  max-width: 512px;
+  line-height: 16px;
+  margin-bottom: var(--gap-y);
+}
+
+.intro p + p {
+  margin-top: 1em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, var(--card));
+  gap: var(--gap-y) var(--gap-x);
+  margin-bottom: var(--gap-y);
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, var(--card));
+}
+
+/* Card: square media with an overlaid caption that fades on hover */
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+.card :is(img, video) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card.muted :is(img, video) {
+  filter: invert(30%) grayscale(100%);
+}
+
+.card.muted:is(:hover, :focus-visible) :is(img, video) {
+  filter: none;
+}
+
+.caption {
+  position: absolute;
+  top: 13.333cqi;
+  left: 0;
+  width: 90cqi;
+  height: 70cqi;
+  padding: 6.667cqi 0 0 13.333cqi;
+  background: var(--caption);
+  color: var(--on-color);
+  font-family: var(--serif);
+  line-height: 16px;
+  pointer-events: none;
+}
+
+.caption li + li {
+  margin-top: 16px;
+}
+
+.card:is(:hover, :focus-visible) .caption {
+  opacity: 0;
+  transition: opacity 300ms 100ms;
+}
+
+/* Credits / facts list next to a project's first card */
+.credits {
+  line-height: 16px;
+}
+
+.credits dt {
+  margin-top: 0.5em;
+  font-weight: 700;
+}
+
+.credits dt:first-child {
+  margin-top: 0;
+}
+
+.credits a {
+  display: inline-block;
+  line-height: 24px; /* 24px tap targets */
+  text-decoration: underline;
+}
+
+main > p a,
+.embed-credit a {
+  text-decoration: underline;
+}
+
+.embed-credit {
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+/* Click-to-load embed placeholder (music page) */
+.embed {
+  max-width: 844px;
+}
+
+.embed button {
+  width: 100%;
+  height: 166px;
+  border: 0;
+  background: #4a4646;
+  color: var(--on-color);
+  font: inherit;
+  cursor: pointer;
+}
+
+.embed iframe {
+  width: 100%;
+  height: 166px;
+  border: 0;
+}
+
+/* Sketches */
+.sketch {
+  position: relative;
+  height: 100vh;
+}
+
+.sketch-hint {
+  position: absolute;
+  inset: 24px 0 auto;
+  color: var(--on-color);
+  font: 36px var(--serif);
+  text-align: center;
+  pointer-events: none;
+}
+
+.sketch canvas {
+  touch-action: none;
+}
+
+.sketch-button {
+  position: absolute;
+  top: 40px;
+  right: 24px;
+}
+
+.model {
+  position: relative;
+  display: flex;
+  gap: var(--gap-x);
+  align-items: flex-start;
+}
+
+.model canvas {
+  width: 60%;
+  height: 70vh;
+  touch-action: none;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --content-top: 32px;
+    --content-left: 16px;
+  }
+
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 16px;
+  }
+
+  .site-title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .site-links {
+    width: 100%;
+    margin: 0;
+  }
+
+  .site-nav {
+    width: 100%;
+  }
+
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .site-nav li {
+    margin: 0;
+  }
+
+  .site-nav li a {
+    display: inline-block;
+    padding: 6px 0;
+  }
+
+  .grid,
+  .grid.two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .intro {
+    max-width: none;
+  }
+
+  .sketch {
+    height: 80vh;
+  }
+
+  .model {
+    flex-direction: column;
+  }
+
+  .model canvas {
+    width: 100%;
+    height: 60vh;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid,
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,31 @@
+---
+// Mounts src/sketches/<name>.ts into a container. Only that sketch's code is downloaded.
+// `deferred` waits for the first pointer/key/scroll input, for sketches that start blank anyway.
+interface Props {
+  name: string;
+  hint?: string;
+  class?: string;
+  deferred?: boolean;
+}
+const { name, hint, class: className = 'sketch', deferred = false } = Astro.props;
+---
+
+<div class={className} data-sketch={name} data-deferred={deferred ? '' : undefined}>
+  {hint && <p class="sketch-hint">{hint}</p>}
+</div>
+
+<script>
+  const sketches = import.meta.glob<{ default: (el: HTMLElement) => void }>('../sketches/*.ts');
+  const inputs = ['pointermove', 'pointerdown', 'keydown', 'scroll'];
+
+  for (const el of document.querySelectorAll<HTMLElement>('[data-sketch]')) {
+    const load = sketches[`../sketches/${el.dataset.sketch}.ts`];
+    if (!load) throw new Error(`Unknown sketch: ${el.dataset.sketch}`);
+    const start = () => {
+      inputs.forEach((type) => removeEventListener(type, start));
+      load().then((mod) => mod.default(el));
+    };
+    if (el.dataset.deferred === undefined) start();
+    else inputs.forEach((type) => addEventListener(type, start, { passive: true }));
+  }
+</script>

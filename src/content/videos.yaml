@@ -1,0 +1,21 @@
+# Music videos, opened in the lightbox.
+- id: noahs-ark-angel
+  title: Noah's Ark Angel
+  cover: ../assets/videos/video1.png
+  href: https://youtu.be/Ub0AvmY80JI
+  embed: true
+- id: immortal-elephant
+  title: Immortal Elephant
+  cover: ../assets/videos/video2.png
+  href: https://youtu.be/sSsRlnVOKIs
+  embed: true
+- id: nuclear-barbarians
+  title: Nuclear Barbarians
+  cover: ../assets/videos/video3.png
+  href: https://youtu.be/zllpGKWRsBI
+  embed: true
+- id: sega-pulse
+  title: Sega Pulse
+  cover: ../assets/videos/video4.png
+  href: https://youtu.be/m8zeFGd-kLc
+  embed: true
