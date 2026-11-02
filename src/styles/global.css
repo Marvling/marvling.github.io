@@ -8,7 +8,7 @@
 :root {
   --bg: #d2d6d6;
   --sidebar: #6a6db0; /* #7b7ebc darkened to pass WCAG AA with white text */
-  --caption: #7bbc97;
+  --caption: #3a805a; /* #7bbc97 darkened to pass WCAG AA with white text */
   --text: #000;
   --on-color: #fff;
   --serif: 'Zilla Slab', serif;
@@ -239,10 +239,14 @@ main > p a,
 
 .sketch-hint {
   position: absolute;
-  inset: 24px 0 auto;
+  top: 24px;
+  left: 50%;
+  translate: -50%;
+  padding: 0 12px 4px;
+  background: var(--sidebar);
   color: var(--on-color);
   font: 36px var(--serif);
-  text-align: center;
+  white-space: nowrap;
   pointer-events: none;
 }
 
